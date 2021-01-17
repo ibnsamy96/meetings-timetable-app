@@ -4,6 +4,8 @@ import {
     facebookSignOut,
 } from "./auth.js";
 import {
+    getMeetings,
+    getTeams,
     postLoginInfo
 } from "./database.js";
 import {
@@ -37,6 +39,8 @@ const autoSignIn = () => {
             userToken = user.ya;
             // console.log(uid);
             postLoginInfo(user, userToken)
+            getTeams(userToken)
+            getMeetings(userToken)
             console.log('signed in successfully - auto check');
             console.log(userToken);
             // ...
