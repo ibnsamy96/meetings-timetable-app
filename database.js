@@ -8,12 +8,8 @@ const endPoints = {
     meetings: "meetings.json"
 }
 
-const getData = async (url = databaseApi) => {
-    const response = await fetch(url, {
-        mode: "no-cors",
-        method: "GET"
-    });
-    console.log(await response);
+const getData = async (url = databaseApi, userToken) => {
+    const response = await fetch(`${url}?auth=${userToken}`);
     const jsonResponse = await response.json();
     return jsonResponse
 };
@@ -26,9 +22,7 @@ const postData = async (url = databaseApi, data = {}, userToken) => {
             "Content-Type": "application/json"
         },
     });
-
     const jsonResponse = await response.json();
-
     return jsonResponse
 };
 
@@ -82,21 +76,11 @@ teams - methods: get - pages: get@new_meeting_page
 
 */
 
-// export const postNewTeam = async (team, userToken) => {
-//     const userId = user.uid;
-//     const userName = user.email;
-//     const userEmail = user.displayName;
-//     const loginTime = new Date();
-//     const userLoginInfo = {
-//         userId,
-//         userName,
-//         userEmail,
-//         loginTime
-//     }
-//     const loginEndpointUrl = databaseApi + endPoints.loginInfo
-//     await postData(loginEndpointUrl, userLoginInfo, userToken)
-//     console.log('Your logging data is saved.');
-// }
+export const getTeams = async (userToken) => {
+    const loginEndpointUrl = databaseApi + endPoints.teams
+    const teams = await getData(loginEndpointUrl, userToken)
+    console.log(teams);
+}
 
 /*
 meetings - methods: get & post - pages: post@new_meeting_page & get@meetings_home_page
@@ -120,3 +104,9 @@ meetings - methods: get & post - pages: post@new_meeting_page & get@meetings_hom
 }
 
 */
+
+export const getMeetings = async (userToken) => {
+    const loginEndpointUrl = databaseApi + endPoints.meetings
+    const meetings = await getData(loginEndpointUrl, userToken)
+    console.log(meetings);
+}
