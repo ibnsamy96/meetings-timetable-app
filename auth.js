@@ -109,33 +109,3 @@ export const facebookSignOut = () => {
             console.log('sign out failed')
         });
 }
-
-
-// await firebase.auth().onAuthStateChanged(async (user) => {
-//     if (user) {
-//         console.log('wow');
-//         // User is signed in, see docs for a list of available properties
-//         // https://firebase.google.com/docs/reference/js/firebase.User
-//         const userId = user.uid;
-//         const userToken = user.ya;
-//         // console.log(uid);
-//         console.log('signed in successfully - auto login');
-//         console.log(userToken);
-//         return userToken;
-
-//         // ...
-//     } else {
-//         // User is signed out
-//         // ...
-//     }
-// });
-
-
-
-// const saveToLocalStorage = (token) => {
-//     localStorage.setItem('userToken', token)
-// }
-
-// const getFromLocalStorage = () => {
-//     return localStorage.getItem('userToken')
-// }

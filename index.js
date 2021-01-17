@@ -4,14 +4,11 @@ import {
     facebookSignOut,
 } from "./auth.js";
 import {
-    getData,
-    postData
+    postLoginInfo
 } from "./database.js";
-// import {
-//     getErrorMessage
-// } from './handle-errors.js'
 import {
-    getPageComponentCode
+    getPageComponentCode,
+    getSharedComponentCode
 } from "./components-manager.js";
 
 let isSignedIn
@@ -19,6 +16,7 @@ let userToken
 
 
 const autoSignIn = () => {
+    document.querySelector('header').innerHTML = getSharedComponentCode('navbar')
     document.querySelector('main').innerHTML = getPageComponentCode('login')
 
     const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
@@ -35,8 +33,10 @@ const autoSignIn = () => {
             // User is signed in, see docs for a list of available properties
             // https://firebase.google.com/docs/reference/js/firebase.User
             const userId = user.uid;
+            console.log(user);
             userToken = user.ya;
             // console.log(uid);
+            postLoginInfo(user, userToken)
             console.log('signed in successfully - auto check');
             console.log(userToken);
             // ...
@@ -51,24 +51,6 @@ const autoSignIn = () => {
     });
 }
 window.addEventListener('load', autoSignIn)
-
-
-// isSignedIn = !!checkForUserToken()
-
-// console.log(async function () {
-//     return await isSignedIn
-// });
-// checkForUserToken().then(data => console.log("عااا"))
-
-// const autoLog = async () => {
-//     // const userToken = await checkForUserToken()
-//     // isSignedIn = await userToken
-//     console.log(isSignedIn);
-//     await console.log('userToken: ' + userToken);
-//     updateLoggingUI()
-// }
-
-// autoLog()
 
 
 window.signIn = async () => {

@@ -8,6 +8,10 @@ import {
     MeetingsDashboardComponent
 } from "./components/pages/meetings/meetings-dashboard.component.js";
 
+import {
+    NavbarComponent
+} from "./components/shared/navbar.component.js";
+
 const pagesRouter = [{
         key: 'login',
         component: LoginComponent
@@ -22,8 +26,18 @@ const pagesRouter = [{
     }
 ]
 
+const sharedComponentsRouter = [{
+    key: 'navbar',
+    component: NavbarComponent
+}]
+
 
 export const getPageComponentCode = (key) => {
     const [component] = pagesRouter.filter(component => component.key === key)
+    return component.component.render()
+}
+
+export const getSharedComponentCode = (key) => {
+    const [component] = sharedComponentsRouter.filter(component => component.key === key)
     return component.component.render()
 }

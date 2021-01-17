@@ -52,10 +52,9 @@ nav {
 
 }
 
-.primaryBoxShadow:hover {
-
+.primaryBoxShadow:hover,
+.primaryBoxShadow:focus {
     box-shadow: 0 0px 15px var(--boxShadowColor);
-
 }
 
 .spinner-border {
