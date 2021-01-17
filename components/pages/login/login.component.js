@@ -10,7 +10,7 @@ export const LoginComponent = {
                 <span class="h6">SIGN IN</span>
                 <!-- <img src="./assets/images/fbSignInBtn.svg" /> -->
             </button>
-            <div id='fbLoginSpinner' class="d-none spinner-border text-primary" role="status">
+            <div id='fbLoginSpinner' class="d-none spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
             <p id='fbLoginMessage' class="d-none h6"></p>

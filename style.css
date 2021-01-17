@@ -57,3 +57,7 @@ nav {
     box-shadow: 0 0px 15px var(--boxShadowColor);
 
 }
+
+.spinner-border {
+    color: #1877F2;
+}
