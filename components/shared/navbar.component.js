@@ -1,7 +1,7 @@
 export const NavbarComponent = {
     render: () => {
         return `
-        <nav class="navbar fixed-top navbar-light bg-light navBoxShadow" dir='ltr'>
+        <nav class="navbar navbar-light bg-light navBoxShadow" dir='ltr'>
         <div class="container-fluid px-2 ">
             <span class="navbar-brand m-0 mx-auto"><b>Ma3an</b> Meetings Timetable</span>
             <div class="d-flex">

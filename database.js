@@ -59,20 +59,37 @@ export const postLoginInfo = async (user, userToken) => {
 teams - methods: get - pages: get@new_meeting_page
 {
     "creatorId": "e324511434rer",
-      "creatorName":"Mahmoud Ibn Samy",
-      "creatorEmail":"kazakaza@gmail.com",
-      "creationTime":1610902493,
-      "branch":"gam3a",
-      "branchName":"الجامعة",
-      "team":"ta3alom",
-      "teamName":"إيفنت التعلّم"
-      "isSubteamsExist":true,
-      "subteam":"tawasol",
-      "subteamName":"التواصل",
-      "members":[
-          "mahmoud samy"
-      ]
-  }
+	"creatorName":"Mahmoud Ibn Samy",
+	"creatorEmail":"kazakaza@gmail.com",
+	"creationTime":1610902493,
+	"branchCode":"tarbya",
+	"branchName":"تربية",
+	"teamCode":"pr",
+	"teamName":"العلاقات العامة",
+	"subteam":null,
+	"members":[
+		"Mahmoud Samy"
+	]
+}
+{
+    "creatorId": "e324511434rer",
+	"creatorName":"Mahmoud Ibn Samy",
+	"creatorEmail":"kazakaza@gmail.com",
+	"creationTime":1610902493,
+	"branchCode":"gam3a",
+	"branchName":"الجامعة",
+	"teamCode":"ta3alom",
+	"teamName":"إيفنت التعلّم",
+	"subteam":{
+		"teamCode":"tawasol",
+		"teamName":"التواصل",
+		"subteam":null,
+		"members":[
+			"Mahmoud Samy"
+		]
+	},
+	"members":null
+}
 
 */
 
@@ -85,19 +102,21 @@ export const getTeams = async (userToken) => {
 /*
 meetings - methods: get & post - pages: post@new_meeting_page & get@meetings_home_page
 {
-  "creatorId": "e324511434rer",
+    "creatorId": "e324511434rer",
 	"creatorName":"Mahmoud Ibn Samy",
 	"creatorEmail":"kazakaza@gmail.com",
 	"creationTime":1610902493,
-	"branch":"gam3a",
+	"branchCode":"gam3a",
 	"branchName":"الجامعة",
-	"team":"ta3alom",
+	"teamCode":"ta3alom",
 	"teamName":"إيفنت التعلّم"
-	"areSubTeamsExist":true,
-	"subTeam":"tawasol",
-	"subTeamName":"التواصل",
+	"subteam":{
+		"teamCode":"tawasol",
+		"teamName":"التواصل",
+		"subteam":null,
+	},
 	"date":"25-11-2021",
-	"time":"05:00-07:30"
+	"time":"05:00-07:30",
 	"members":[
 		"mahmoud samy"
 	]
