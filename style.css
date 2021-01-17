@@ -1,0 +1,59 @@
+:root {
+    --black: #191919;
+    --boxShadowPlace: 0 0;
+    --boxShadowBlur: 8px;
+    --boxShadowColor: rgba(0, 0, 0, 0.3);
+    --boxShadow: var(--boxShadowPlace) var(--boxShadowBlur) var(--boxShadowColor);
+    --primaryFontColor: var(--black)
+}
+
+* {
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+nav {
+    user-select: none;
+    /* background-color: #fff !important; */
+    overflow: auto;
+    color: var(--primaryFontColor);
+}
+
+.navBoxShadow {
+    --boxShadowPlaceOfNav: 0 2px;
+    --boxShadowBlurOfNav: 20px;
+    box-shadow: var(--boxShadowPlaceOfNav) var(--boxShadowBlurOfNav) var(--boxShadowColor);
+}
+
+.mainHeight {
+    min-height: calc(100vh - (40px + 16px) - 26px);
+}
+
+
+.pageHeadingText {
+    color: var(--primaryFontColor);
+}
+
+.fbBtn {
+    /* background-image: url('./assets/images/fbLoginBtn.svg'); */
+    /* width: 120px !important; */
+    background-color: #1877F2;
+    color: white !important;
+
+}
+
+.primaryBoxShadow {
+
+    box-shadow: var(--boxShadow);
+    transition: all 0.1s ease-in-out;
+
+}
+
+.primaryBoxShadow:hover {
+
+    box-shadow: 0 0px 15px var(--boxShadowColor);
+
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7d45ce2a80.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma3an Meetings Timetable</title>
+    <link rel="stylesheet" href="./assets/css/normalize.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.rtl.min.css"
+        integrity="sha384-mUkCBeyHPdg0tqB6JDd+65Gpw5h/l8DKcCTV2D2UpaMMFd7Jo8A+mDAosaWgFBPl" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* width of vertical & height of horizontal scrollbars */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-light bg-light navBoxShadow" dir='ltr'>
+            <div class="container-fluid px-2 w-auto">
+                <span class="navbar-brand m-0 mx-auto"><b>Ma3an</b> Meetings Timetable </span>
+                <button class="btn fbBtn primaryBoxShadow d-none" onclick="signOut()" id='fbSignOutBtn'>
+                    <span class="h6">SIGN OUT</span>
+                    <!-- <img src="./assets/images/fbSignInBtn.svg" /> -->
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main id='root' class="container-md mt-0 mainHeight">
+    </main>
+    <!-- <button id='signIn' style="display: inline;" onclick="signIn()">signIn</button>
+    <button id='signOut' style="display: none;" onclick="signOut()">popup</button> -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+    <script src="./firebase-initialization.js"></script>
+    <script type="module" src="./index.js"></script>
+</body>
+
+</html>
