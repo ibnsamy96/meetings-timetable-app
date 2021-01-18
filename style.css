@@ -37,24 +37,35 @@ nav {
     color: var(--primaryFontColor);
 }
 
-.fbBtn {
+.btn-primary {
     /* background-image: url('./assets/images/fbLoginBtn.svg'); */
     /* width: 120px !important; */
     background-color: #1877F2;
+    border: none !important;
     color: white !important;
 
 }
 
 .primaryBoxShadow {
-
     box-shadow: var(--boxShadow);
     transition: all 0.1s ease-in-out;
-
 }
 
 .primaryBoxShadow:hover,
 .primaryBoxShadow:focus {
     box-shadow: 0 0px 15px var(--boxShadowColor);
+}
+
+.secondaryBoxShadow {
+    box-shadow: var(--boxShadowPlace) 4px var(--boxShadowColor);
+    ;
+    transition: all 0.1s ease-in-out;
+}
+
+.secondaryBoxShadow:hover,
+.secondaryBoxShadow:focus {
+    box-shadow: var(--boxShadowPlace) 8px var(--boxShadowColor);
+    ;
 }
 
 .spinner-border {
@@ -65,4 +76,24 @@ nav {
     position: relative;
     z-index: 10;
     /* top: 50px; */
+}
+
+.btn-info {
+    background-color: #F9F4F4;
+    border: none !important;
+    color: var(--black);
+}
+
+.btn-info:active,
+.btn-info:hover,
+.btn-info:focus {
+    background-color: rgba(25, 135, 84, 0.5);
+    color: #fff;
+
+}
+
+.btn-success {
+    /* background-color: #F9F4F4; */
+    border: none !important;
+    /* color: var(--black); */
 }

@@ -1,18 +1,85 @@
 export const MeetingFormComponent = {
     render: () => {
         return `
-        <section id='meeting-form-component' class="">
+        <section id='meeting-form-component' class="pt-2">
             <h1 class="h2 mb-3 pageHeadingText">أضف اجتماع</h1>
-            
-            <button class="btn fbBtn primaryBoxShadow" onclick="signIn()" id='fbSignInBtn'>
-                <span class="h6">SIGN IN</span>
-                <!-- <img src="./assets/images/fbSignInBtn.svg" /> -->
-            </button>
-            <div id='fbLoginSpinner' class="d-none spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <p id='fbLoginMessage' class="d-none h6"></p>
-    </section>
+            <ol>
+                <li id='q1' data-multiple=true class="h4 my-4">
+                    <p class="m-0"> اختر نوع المعاد </p>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                </li>
+                <li id='q2' data-multiple=false class="h4 my-4">
+                    <p class="m-0"> اختر الفرع </p>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info" onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info" onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                </li>
+                <li id='q3' data-multiple=false class="h4 my-4">
+                    <p class="m-0"> اختار الفريق </p>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info" onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                    <div class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
+                        onclick="chooseThisChoice(this)"> اختارني أنا ! </div>
+                </li>
+            </ol>
+            <p id='warning' class = 'h6 d-none'>يجب اختيار إجابة واحدة على الأقل في كل سؤال!</p>
+            <div class="h4 fw-normal choice choiceSelected secondaryBoxShadow me-auto mt-2 btn btn-primary" onclick="submitForm()"> حفظ </div>
+        </section>
         `
     }
 }

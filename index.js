@@ -19,8 +19,7 @@ let userToken
 
 const autoSignIn = () => {
     document.querySelector('header').innerHTML = getSharedComponentCode('navbar')
-    // TODO uncomment next line to enable the ui
-    // document.querySelector('main').innerHTML = getPageComponentCode('login')
+    document.querySelector('main').innerHTML = getPageComponentCode('login')
 
     const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
     const fbSignInBtn = document.querySelector('#fbSignInBtn')
@@ -52,8 +51,7 @@ const autoSignIn = () => {
         }
         isSignedIn = !!user
         console.log(isSignedIn);
-        // TODO uncomment next line to enable the ui
-        // updateLoggingUI()
+        updateLoggingUI()
     });
 }
 window.addEventListener('load', autoSignIn)
@@ -89,6 +87,8 @@ window.signIn = async () => {
 }
 
 window.signOut = async () => {
+    document.querySelector('main').innerHTML = getPageComponentCode('login')
+
     const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
     const fbSignOutBtn = document.querySelector('#fbSignOutBtn')
 
@@ -102,22 +102,23 @@ window.signOut = async () => {
 
 
 function updateLoggingUI(errorMessage = undefined) {
+    // TODO controlBtns appear with homepage not before it
     const fbSignInBtn = document.querySelector('#fbSignInBtn')
     const fbLoginMessage = document.querySelector('#fbLoginMessage')
     const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
-    const fbSignOutBtn = document.querySelector('#fbSignOutBtn')
+    const controlBtns = document.querySelector('#controlBtns')
 
     if (isSignedIn) {
         // if user is signed in
         fbSignInBtn.classList.add('d-none')
-        fbSignOutBtn.classList.remove('d-none')
+        controlBtns.classList.remove('d-none')
         fbLoginMessage.classList.remove('d-none')
         fbLoginMessage.innerText = "تم تسجيل دخولك و سيتم الآن توجيهك إلى صفحة الاجتماعات"
 
     } else {
         // if user isn't signed in - maybe signed out and may be error
         fbSignInBtn.classList.remove('d-none')
-        fbSignOutBtn.classList.add('d-none')
+        controlBtns.classList.add('d-none')
         fbLoginMessage.classList.toggle('d-none', !errorMessage)
         fbLoginMessage.innerText = errorMessage
     }
@@ -126,23 +127,52 @@ function updateLoggingUI(errorMessage = undefined) {
 }
 
 
-window.routeToNewMeeting = (selectedElement) => {
-    console.log(selectedElement);
-    // document.querySelector('main').innerHTML = getPageComponentCode('meeting-form')
-    selectedElement.classList.toggle('btn-primary')
-    selectedElement.classList.toggle('btn-secondary')
+window.routeToNewMeeting = (pageBtn) => {
+    // console.log(selectedElement);
+    pageBtn.disabled = true
+    document.querySelector('main').innerHTML = getPageComponentCode('meeting-form')
+}
+
+window.chooseThisChoice = (selectedElement) => {
+    // console.log(selectedElement);
+    console.log(typeof selectedElement.parentElement.dataset.multiple);
+    if (selectedElement.parentElement.dataset.multiple === 'true') {
+        selectedElement.classList.toggle('btn-success')
+        selectedElement.classList.toggle('btn-info')
+    } else {
+        if (selectedElement.classList.contains('btn-info')) {
+
+            [...selectedElement.parentElement.children].splice(1).forEach(choice => {
+                console.log(choice);
+                choice.classList.remove('btn-success')
+                choice.classList.add('btn-info')
+            })
+
+        }
+        selectedElement.classList.toggle('btn-success')
+        selectedElement.classList.toggle('btn-info')
+    }
+
 
 }
 
 window.submitForm = () => {
-    const selectedMembers = [...document.querySelectorAll('#q1 .btn-secondary')]
-    const selectedTeam = [...document.querySelectorAll('#q2 .btn-secondary')]
-    const selectedBranch = [...document.querySelectorAll('#q3 .btn-secondary')]
+    const selectedMembers = [...document.querySelectorAll('#q1 .btn-success')]
+    const selectedTeam = [...document.querySelectorAll('#q2 .btn-success')]
+    const selectedBranch = [...document.querySelectorAll('#q3 .btn-success')]
     const members = selectedMembers.map(element => element.innerText)
     const team = selectedTeam.map(element => element.innerText)
     const branch = selectedBranch.map(element => element.innerText)
 
-    console.log(members);
-    console.log(team);
-    console.log(branch);
+    if (members.length < 1 || team.length < 1 || branch.length < 1) {
+        document.querySelector('#warning').classList.remove('d-none')
+    } else {
+        document.querySelector('#warning').classList.add('d-none')
+        console.log(members);
+        console.log(team);
+        console.log(branch);
+    }
+
+    document.querySelector('main').innerHTML = getPageComponentCode('login')
+    document.querySelector('newMeetingBtn').disabled = false
 }

@@ -6,7 +6,7 @@ export const LoginComponent = {
             <h1 class="h2 mb-3 pageHeadingText"> أهلًا بيك صديقي الليدر المعوي العزيز <i
                     class="h4 fw-bolder fas fa-heart" style="color: #e85a71;"></i>
             </h1>
-            <button class="btn fbBtn primaryBoxShadow" onclick="signIn()" id='fbSignInBtn'>
+            <button class="btn btn-primary primaryBoxShadow" onclick="signIn()" id='fbSignInBtn'>
                 <span class="h6">SIGN IN</span>
                 <!-- <img src="./assets/images/fbSignInBtn.svg" /> -->
             </button>
