@@ -16,10 +16,15 @@ import {
 let isSignedIn
 let userToken
 
+const mainRouter = (pageName) => {
+    //function to replace main element with the right pageComponent
+    document.querySelector('main').innerHTML = getPageComponentCode(pageName)
+}
+
 
 const autoSignIn = () => {
     document.querySelector('header').innerHTML = getSharedComponentCode('navbar')
-    document.querySelector('main').innerHTML = getPageComponentCode('login')
+    mainRouter('login')
 
     const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
     const fbSignInBtn = document.querySelector('#fbSignInBtn')
@@ -87,7 +92,7 @@ window.signIn = async () => {
 }
 
 window.signOut = async () => {
-    document.querySelector('main').innerHTML = getPageComponentCode('login')
+    mainRouter('login')
 
     const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
     const fbSignOutBtn = document.querySelector('#fbSignOutBtn')
@@ -130,7 +135,7 @@ function updateLoggingUI(errorMessage = undefined) {
 window.routeToNewMeeting = (pageBtn) => {
     // console.log(selectedElement);
     pageBtn.disabled = true
-    document.querySelector('main').innerHTML = getPageComponentCode('meeting-form')
+    mainRouter('meeting-form')
 }
 
 window.chooseThisChoice = (selectedElement) => {
@@ -171,8 +176,11 @@ window.submitForm = () => {
         console.log(members);
         console.log(team);
         console.log(branch);
+
+        document.querySelector('#newMeetingBtn').disabled = false
+
+        // TODO route to home component instead of the login component
+        mainRouter('login')
     }
 
-    document.querySelector('main').innerHTML = getPageComponentCode('login')
-    document.querySelector('newMeetingBtn').disabled = false
 }
