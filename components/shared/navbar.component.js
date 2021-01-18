@@ -10,6 +10,10 @@ export const NavbarComponent = {
                     <span class="p"><i class="fas fa-walking"></i></span>
                     <!-- <img src="./assets/images/fbSignInBtn.svg" /> -->
                 </button>
+                <button class="btn ms-2 fbBtn primaryBoxShadow"
+                    onclick="routeToNewMeeting()" id='newMeetingBtn'>
+                    <span class="p">أضف اجتماع</span>
+                </button>
             </div>
         </div>
     </nav>

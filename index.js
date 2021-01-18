@@ -122,3 +122,8 @@ function updateLoggingUI(errorMessage = undefined) {
     fbLoginSpinner.classList.add('d-none') //spinner none because user has a known state
 
 }
+
+
+window.routeToNewMeeting = () => {
+
+}

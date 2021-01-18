@@ -29,7 +29,7 @@ nav {
 }
 
 .mainHeight {
-    min-height: calc(100vh - (40px + 16px) - 26px);
+    min-height: calc(100vh - (40px + 16px) - 24px);
 }
 
 
@@ -59,4 +59,10 @@ nav {
 
 .spinner-border {
     color: #1877F2;
+}
+
+#login-component {
+    position: relative;
+    z-index: 10;
+    /* top: 50px; */
 }
