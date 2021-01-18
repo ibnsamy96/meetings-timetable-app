@@ -71,7 +71,7 @@ window.signIn = async () => {
     // let data
     console.log(window.innerWidth);
     // let state, credential
-    if (window.innerWidth > 750) {
+    if (window.innerWidth >= 767) {
         var {
             state,
             userToken,
@@ -134,7 +134,7 @@ function updateLoggingUI(errorMessage = undefined) {
 
 window.routeToNewMeeting = (pageBtn) => {
     // console.log(selectedElement);
-    pageBtn.disabled = true
+    pageBtn.classList.add('d-none')
     mainRouter('meeting-form')
 }
 
@@ -177,7 +177,7 @@ window.submitForm = () => {
         console.log(team);
         console.log(branch);
 
-        document.querySelector('#newMeetingBtn').disabled = false
+        document.querySelector('#newMeetingBtn').classList.remove('d-none')
 
         // TODO route to home component instead of the login component
         mainRouter('login')

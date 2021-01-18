@@ -97,3 +97,22 @@ nav {
     border: none !important;
     /* color: var(--black); */
 }
+
+
+@media (max-width: 767px) {
+    #newMeetingBtn {
+        position: fixed;
+        bottom: 10%;
+        right: 50%;
+        transform: translateX(50%);
+        /* border-radius: 50%; */
+        padding-top: 0.6rem;
+        padding-top: 0.6rem;
+        padding-right: 0.8rem;
+        padding-left: 0.8rem;
+        z-index: 20;
+
+    }
+
+
+}

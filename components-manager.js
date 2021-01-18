@@ -31,13 +31,17 @@ const sharedComponentsRouter = [{
     component: NavbarComponent
 }]
 
+const isSmallScreen = window.innerWidth <= 767 ? true : false
+
+
 
 export const getPageComponentCode = (key) => {
     const [component] = pagesRouter.filter(component => component.key === key)
     return component.component.render()
+
 }
 
 export const getSharedComponentCode = (key) => {
     const [component] = sharedComponentsRouter.filter(component => component.key === key)
-    return component.component.render()
+    return component.component.render(isSmallScreen)
 }
