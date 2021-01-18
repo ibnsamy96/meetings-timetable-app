@@ -19,7 +19,8 @@ let userToken
 
 const autoSignIn = () => {
     document.querySelector('header').innerHTML = getSharedComponentCode('navbar')
-    document.querySelector('main').innerHTML = getPageComponentCode('login')
+    // TODO uncomment next line to enable the ui
+    // document.querySelector('main').innerHTML = getPageComponentCode('login')
 
     const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
     const fbSignInBtn = document.querySelector('#fbSignInBtn')
@@ -51,7 +52,8 @@ const autoSignIn = () => {
         }
         isSignedIn = !!user
         console.log(isSignedIn);
-        updateLoggingUI()
+        // TODO uncomment next line to enable the ui
+        // updateLoggingUI()
     });
 }
 window.addEventListener('load', autoSignIn)
@@ -124,6 +126,23 @@ function updateLoggingUI(errorMessage = undefined) {
 }
 
 
-window.routeToNewMeeting = () => {
+window.routeToNewMeeting = (selectedElement) => {
+    console.log(selectedElement);
+    // document.querySelector('main').innerHTML = getPageComponentCode('meeting-form')
+    selectedElement.classList.toggle('btn-primary')
+    selectedElement.classList.toggle('btn-secondary')
 
+}
+
+window.submitForm = () => {
+    const selectedMembers = [...document.querySelectorAll('#q1 .btn-secondary')]
+    const selectedTeam = [...document.querySelectorAll('#q2 .btn-secondary')]
+    const selectedBranch = [...document.querySelectorAll('#q3 .btn-secondary')]
+    const members = selectedMembers.map(element => element.innerText)
+    const team = selectedTeam.map(element => element.innerText)
+    const branch = selectedBranch.map(element => element.innerText)
+
+    console.log(members);
+    console.log(team);
+    console.log(branch);
 }

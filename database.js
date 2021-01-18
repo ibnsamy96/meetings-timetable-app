@@ -119,7 +119,8 @@ meetings - methods: get & post - pages: post@new_meeting_page & get@meetings_hom
 	"time":"05:00-07:30",
 	"members":[
 		"mahmoud samy"
-	]
+	],
+    isFinal:true
 }
 
 */
