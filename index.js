@@ -148,7 +148,7 @@ window.chooseThisChoice = (selectedElement) => {
         if (selectedElement.classList.contains('btn-info')) {
 
             [...selectedElement.parentElement.children].splice(1).forEach(choice => {
-                console.log(choice);
+                // console.log(choice);
                 choice.classList.remove('btn-success')
                 choice.classList.add('btn-info')
             })
@@ -162,21 +162,26 @@ window.chooseThisChoice = (selectedElement) => {
 }
 
 window.submitForm = () => {
-    const selectedMembers = [...document.querySelectorAll('#q1 .btn-success')]
-    const selectedTeam = [...document.querySelectorAll('#q2 .btn-success')]
-    const selectedBranch = [...document.querySelectorAll('#q3 .btn-success')]
-    const members = selectedMembers.map(element => element.innerText)
-    const team = selectedTeam.map(element => element.innerText)
-    const branch = selectedBranch.map(element => element.innerText)
+    const questions = [...document.querySelectorAll('li')].map(question => {
+        const answerChoices = [...question.children].splice(1)
+        const chosenAnswers = answerChoices.filter(choice => {
+                const isChoiceSelected = choice.classList.contains('btn-success')
+                return isChoiceSelected
+            })
+            .map(selectedElement => selectedElement.innerText)
 
-    if (members.length < 1 || team.length < 1 || branch.length < 1) {
+        return {
+            id: question.id,
+            answers: chosenAnswers
+        }
+    })
+
+
+    if (questions.some(question => question.answers.length < 1)) {
         document.querySelector('#warning').classList.remove('d-none')
     } else {
+        console.log(questions);
         document.querySelector('#warning').classList.add('d-none')
-        console.log(members);
-        console.log(team);
-        console.log(branch);
-
         document.querySelector('#newMeetingBtn').classList.remove('d-none')
 
         // TODO route to home component instead of the login component
