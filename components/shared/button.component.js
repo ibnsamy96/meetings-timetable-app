@@ -1,6 +1,6 @@
 export const ButtonComponent = {
 
-    render: (btn = {
+    render: (btnData = {
         id: '',
         activationMethod: '',
         content: '',
@@ -11,8 +11,8 @@ export const ButtonComponent = {
         spanStyle: ''
     }) => {
         return `
-        <button class="btn ${btn.buttonColorClass} primaryBoxShadow ${btn.buttonClasses}" style="${btn.buttonStyle}" onclick="${btn.activationMethod}" id='${btn.id}'>
-        <span style="${btn.spanStyle}" class="m-0 p-0 ${btn.spanClasses}">${btn.content}</span>
+        <button class="btn ${btnData.buttonColorClass} primaryBoxShadow ${btnData.buttonClasses}" style="${btnData.buttonStyle}" onclick="${btnData.activationMethod}" id='${btnData.id}'>
+        <span style="${btnData.spanStyle}" class="m-0 p-0 ${btnData.spanClasses}">${btnData.content}</span>
         </button>
         `
     }

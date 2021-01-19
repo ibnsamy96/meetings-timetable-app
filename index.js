@@ -161,14 +161,24 @@ window.chooseThisChoice = (selectedElement) => {
 
 }
 
-window.submitForm = () => {
+window.checkMeetingForm = () => {
+    document.querySelector('#checkMeetingForm').disabled = true
+    document.querySelector('#submitMeetingForm').classList.remove('d-none')
+}
+
+window.submitMeetingForm = () => {
     const questions = [...document.querySelectorAll('li')].map(question => {
         const answerChoices = [...question.children].splice(1)
         const chosenAnswers = answerChoices.filter(choice => {
                 const isChoiceSelected = choice.classList.contains('btn-success')
                 return isChoiceSelected
             })
-            .map(selectedElement => selectedElement.innerText)
+            .map(selectedElement => {
+                return {
+                    id: selectedElement.id,
+                    content: selectedElement.innerText
+                }
+            })
 
         return {
             id: question.id,

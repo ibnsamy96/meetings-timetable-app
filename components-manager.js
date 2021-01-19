@@ -51,7 +51,7 @@ export const getPageComponentCode = (key) => {
 
 }
 
-export const getSharedComponentCode = (key, btn = {
+export const getSharedComponentCode = (key, btnData = {
     id: '',
     activationMethod: '',
     content: '',
@@ -62,31 +62,31 @@ export const getSharedComponentCode = (key, btn = {
 }) => {
     const [component] = sharedComponentsRouter.filter(component => component.key === key)
     if (component.key === 'button') {
-        const handledButtonObject = handleButtonAttributes(btn)
+        const handledButtonObject = handleButtonAttributes(btnData)
         return component.component.render(handledButtonObject)
     } else {
         return component.component.render()
     }
 }
 
-function handleButtonAttributes(btn) {
+function handleButtonAttributes(btnData) {
 
     // check for button values and put right value depending on screen size.
     // if the object has atNotSmallScreen attribute then it means there a responsive content and if not put the available content
-    const id = btn.id
-    const activationMethod = btn.activationMethod
+    const id = btnData.id
+    const activationMethod = btnData.activationMethod
 
-    const content = btn.content.atSmallScreen ? isSmallScreen ? btn.content.atSmallScreen : btn.content.atNotSmallScreen : btn.content
+    const content = btnData.content.atSmallScreen ? isSmallScreen ? btnData.content.atSmallScreen : btnData.content.atNotSmallScreen : btnData.content
 
-    const buttonColorClass = btn.buttonColorClass.atSmallScreen ? isSmallScreen ? btn.buttonColorClass.atSmallScreen : btn.buttonColorClass.atNotSmallScreen : btn.buttonColorClass
+    const buttonColorClass = btnData.buttonColorClass.atSmallScreen ? isSmallScreen ? btnData.buttonColorClass.atSmallScreen : btnData.buttonColorClass.atNotSmallScreen : btnData.buttonColorClass
 
-    const buttonClasses = btn.buttonClasses.atSmallScreen ? isSmallScreen ? btn.buttonClasses.atSmallScreen : btn.buttonClasses.atNotSmallScreen : btn.buttonClasses
+    const buttonClasses = btnData.buttonClasses.atSmallScreen ? isSmallScreen ? btnData.buttonClasses.atSmallScreen : btnData.buttonClasses.atNotSmallScreen : btnData.buttonClasses
 
-    const spanClasses = btn.spanClasses.atSmallScreen ? isSmallScreen ? btn.spanClasses.atSmallScreen : btn.spanClasses.atNotSmallScreen : btn.spanClasses
+    const spanClasses = btnData.spanClasses.atSmallScreen ? isSmallScreen ? btnData.spanClasses.atSmallScreen : btnData.spanClasses.atNotSmallScreen : btnData.spanClasses
 
-    const buttonStyle = btn.buttonStyle.atSmallScreen ? isSmallScreen ? btn.buttonStyle.atSmallScreen : btn.buttonStyle.atNotSmallScreen : btn.buttonStyle
+    const buttonStyle = btnData.buttonStyle.atSmallScreen ? isSmallScreen ? btnData.buttonStyle.atSmallScreen : btnData.buttonStyle.atNotSmallScreen : btnData.buttonStyle
 
-    const spanStyle = btn.spanStyle.atSmallScreen ? isSmallScreen ? btn.spanStyle.atSmallScreen : btn.spanStyle.atNotSmallScreen : btn.spanStyle
+    const spanStyle = btnData.spanStyle.atSmallScreen ? isSmallScreen ? btnData.spanStyle.atSmallScreen : btnData.spanStyle.atNotSmallScreen : btnData.spanStyle
 
     return {
         id,
