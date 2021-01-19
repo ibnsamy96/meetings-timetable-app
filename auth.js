@@ -42,6 +42,8 @@ export const facebookSignInUsingPopup = () => {
 
             console.log(email);
             console.log(errorCode);
+            saveUserToken(userToken)
+
             return {
                 state: false,
                 userToken: undefined,
@@ -71,6 +73,7 @@ export const facebookSignInUsingRedirect = async () => {
 
             console.log('signed in successfully');
             console.log(user);
+            saveUserToken(userToken)
             return {
                 state: true,
                 userToken,
@@ -108,4 +111,15 @@ export const facebookSignOut = () => {
             console.log(error);
             console.log('sign out failed')
         });
+}
+
+
+export const saveUserToken = (token) => {
+    // saving to session storage
+    sessionStorage.setItem('userToken', token)
+}
+
+export const restoreUserToken = () => {
+    // retrieving from session storage
+    return sessionStorage.getItem('userToken')
 }

@@ -6,9 +6,19 @@ import {
     getSharedComponentCode
 } from "../../../components-manager.js";
 
+import {
+    getTeams
+} from "../../../database.js";
+
+let teams;
 
 export const MeetingFormComponent = {
-    render: () => {
+    initialize: async () => {
+        teams = await getTeams()
+    },
+    render: function () {
+        await this.initialize()
+
         return `
         <section id='meeting-form-component' class="pt-2 row">
         <div class="col">

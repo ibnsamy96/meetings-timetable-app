@@ -1,29 +1,33 @@
+import {
+	restoreUserToken
+} from "./auth.js";
+
 const databaseApi = "https://ma3an-apps-default-rtdb.firebaseio.com/meetings-timetable/";
 
 
 
 const endPoints = {
-    loginInfo: 'login-info.json',
-    teams: "teams.json",
-    meetings: "meetings.json"
+	loginInfo: 'login-info.json',
+	teams: "teams.json",
+	meetings: "meetings.json"
 }
 
 const getData = async (url = databaseApi, userToken) => {
-    const response = await fetch(`${url}?auth=${userToken}`);
-    const jsonResponse = await response.json();
-    return jsonResponse
+	const response = await fetch(`${url}?auth=${userToken}`);
+	const jsonResponse = await response.json();
+	return jsonResponse
 };
 
 const postData = async (url = databaseApi, data = {}, userToken) => {
-    const response = await fetch(`${url}?auth=${userToken}`, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json"
-        },
-    });
-    const jsonResponse = await response.json();
-    return jsonResponse
+	const response = await fetch(`${url}?auth=${userToken}`, {
+		method: "POST",
+		body: JSON.stringify(data),
+		headers: {
+			"Content-Type": "application/json"
+		},
+	});
+	const jsonResponse = await response.json();
+	return jsonResponse
 };
 
 /*
@@ -37,20 +41,21 @@ loginInfo
 */
 
 
-export const postLoginInfo = async (user, userToken) => {
-    const userId = user.uid;
-    const userName = user.email;
-    const userEmail = user.displayName;
-    const loginTime = new Date();
-    const userLoginInfo = {
-        userId,
-        userName,
-        userEmail,
-        loginTime
-    }
-    const loginEndpointUrl = databaseApi + endPoints.loginInfo
-    await postData(loginEndpointUrl, userLoginInfo, userToken)
-    console.log('Your logging data is saved.');
+export const postLoginInfo = async (user) => {
+	const userId = user.uid;
+	const userToken = restoreUserToken()
+	const userName = user.email;
+	const userEmail = user.displayName;
+	const loginTime = new Date();
+	const userLoginInfo = {
+		userId,
+		userName,
+		userEmail,
+		loginTime
+	}
+	const loginEndpointUrl = databaseApi + endPoints.loginInfo
+	await postData(loginEndpointUrl, userLoginInfo, userToken)
+	console.log('Your logging data is saved.');
 }
 
 
@@ -93,10 +98,19 @@ teams - methods: get - pages: get@new_meeting_page
 
 */
 
-export const getTeams = async (userToken) => {
-    const loginEndpointUrl = databaseApi + endPoints.teams
-    const teams = await getData(loginEndpointUrl, userToken)
-    console.log(teams);
+export const getTeams = async () => {
+	const loginEndpointUrl = databaseApi + endPoints.teams
+	const userToken = restoreUserToken()
+	const teams = await getData(loginEndpointUrl, userToken) // {team1Id:{team1Value},team2Id:{teamValue} ...}
+	const teamsIds = Object.keys(teams) // ids of all teams
+	const teamsData = teamsIds.map(teamId => {
+		// returned value -> {team1Id,team1Value}
+		return {
+			teamId,
+			...teams[teamId]
+		}
+	})
+	return teamsData // teamData -> [{team1Id,team1Value},{team2Id,team2Value} ...]
 }
 
 /*
@@ -125,8 +139,10 @@ meetings - methods: get & post - pages: post@new_meeting_page & get@meetings_hom
 
 */
 
-export const getMeetings = async (userToken) => {
-    const loginEndpointUrl = databaseApi + endPoints.meetings
-    const meetings = await getData(loginEndpointUrl, userToken)
-    console.log(meetings);
+export const getMeetings = async () => {
+	const loginEndpointUrl = databaseApi + endPoints.meetings
+	const userToken = restoreUserToken()
+	const meetings = await getData(loginEndpointUrl, userToken)
+	console.log(meetings);
+
 }

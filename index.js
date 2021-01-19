@@ -2,6 +2,7 @@ import {
     facebookSignInUsingPopup,
     facebookSignInUsingRedirect,
     facebookSignOut,
+    saveUserToken
 } from "./auth.js";
 import {
     getMeetings,
@@ -77,10 +78,11 @@ const autoSignIn = () => {
             const userId = user.uid;
             console.log(user);
             userToken = user.ya;
+            saveUserToken(userToken)
             // console.log(uid);
-            postLoginInfo(user, userToken)
-            getTeams(userToken)
-            getMeetings(userToken)
+            postLoginInfo(user)
+            getTeams()
+            getMeetings()
             console.log('signed in successfully - auto check');
             console.log(userToken);
             // ...
