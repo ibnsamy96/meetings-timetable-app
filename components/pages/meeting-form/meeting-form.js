@@ -4,12 +4,16 @@ const timeRegex = /^(2[0-3]|[0-1][0-9]):[0-5][0-9]$/
 // const dateRegex = /^[1-31]\/[1-12]\/2021$/
 const dateRegex = /^20([2-9][1-9]|[3-9]0)\/(1[0-2]|[1-9])\/([1-9]|[1-2][0-9]|3[01])$/
 
+export const showNextQuestion = (selectedElement) => {
+
+
+
+}
 
 export const disableMeetingForm = (state) => {
     document.querySelector('#fireCheckMeetingForm').disabled = state
     document.querySelector('#fireSubmitMeetingForm').classList.toggle('d-none', !state)
 }
-
 
 export const checkMeetingForm = () => {
 

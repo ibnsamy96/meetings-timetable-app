@@ -10,17 +10,17 @@ import {
     getTeams
 } from "../../../database.js";
 
-let teams;
+let branches;
 
 export const MeetingFormComponent = {
     initialize: async () => {
-        teams = await getTeams()
+        branches = await getTeams()
     },
     render: async function () {
-        if (!teams) {
+        if (!branches) {
             await this.initialize()
         }
-        console.log(teams);
+        console.log(branches);
         return `
         <section id='meeting-form-component' class="pt-2 row">
         <div class="col">
@@ -41,18 +41,11 @@ export const MeetingFormComponent = {
                 id : 'branch',
                 isMultiple : 'false',
                 questionContent : 'اختر الفرع',
-                choices : [
-                    {id:'gam3a',content:'الجامعة'},
-                    {id:'tebb',content:'طب'},
-                    {id:'handsa',content:'هندسة'},
-                    {id:'tarbia',content:'تربية'},
-                    {id:'tgara',content:'تجارة'},
-                    {id:'asnan',content:'أسنان'}
-                ]
+                choices : branches.map(branch=>{return {id:branch.branchCode,content:branch.branchName}})
             })}           
 
             ${QuestionComponent.renderSelect({
-                id : 'gam3aTeams',
+                id : 'gam3a-Teams',
                 isMultiple : 'false',
                 questionContent : 'اختر الفريق',
                 choices : [
@@ -65,7 +58,7 @@ export const MeetingFormComponent = {
             })}
 
             ${QuestionComponent.renderSelect({
-                id : 'ta3alomSubTeams',
+                id : 'ta3alom-SubTeams',
                 isMultiple : 'false',
                 questionContent : 'اختر الفريق الفرعي',
                 choices : [

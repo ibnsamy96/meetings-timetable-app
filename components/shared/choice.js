@@ -1,5 +1,10 @@
+import {
+    showNextQuestion
+} from "../pages/meeting-form/meeting-form.js";
+
 export const chooseThisChoice = (selectedElement) => {
-    // console.log(selectedElement);
+    showNextQuestion(selectedElement.parentElement.id);
+
     console.log(selectedElement.innerText);
     if (selectedElement.parentElement.dataset.multiple === 'true') {
         selectedElement.classList.toggle('btn-success')
