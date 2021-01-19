@@ -1,19 +1,39 @@
+import {
+    getSharedComponentCode
+} from "../../components-manager.js";
+
 export const NavbarComponent = {
-    render: (isSmallScreen) => {
+    render: () => {
         return `
         <nav class="navbar navbar-light bg-light navBoxShadow" dir='ltr'>
         <div class="container-fluid px-2 ">
             <span class="navbar-brand m-0 mx-auto"><b>Ma3an</b> Meetings Timetable</span>
             <div id='controlBtns' class="d-flex d-none">
-                <button class="btn ms-2 btn-primary d-flex justify-content-center align-content-center primaryBoxShadow"
-                    onclick="routeToNewMeeting(this)" id='newMeetingBtn'>
-                    <span class="${isSmallScreen?'h1':'p'} m-0 p-0">${isSmallScreen?'<i class="far fa-calendar-plus"></i>':'أضف اجتماع'}</span>
-                </button>
-                <button class="btn ms-2 btn-primary primaryBoxShadow"
-                    style="background-color: #191919;padding: .3rem .65rem;" onclick="signOut()" id='fbSignOutBtn'>
-                    <span class="p"><i class="fas fa-walking"></i></span>
-                    <!-- <img src="./assets/images/fbSignInBtn.svg" /> -->
-                </button>
+                
+
+                ${getSharedComponentCode('button', {
+                    id: 'newMeetingBtn',
+                    activationMethod: 'routeToNewMeeting(this)',
+                    content: {atSmallScreen:'<i class="far fa-calendar-plus"></i>',atNotSmallScreen:'أضف اجتماع'},
+                    buttonColorClass: 'btn-primary',
+                    buttonClasses:'ms-2',
+                    spanClasses:{atSmallScreen:'h1',atNotSmallScreen:'p'},
+                    buttonStyle: '',
+                    spanStyle: ''
+                })}
+                
+     
+                ${getSharedComponentCode('button',{
+                    id: 'fbSignOutBtn',
+                    activationMethod: 'signOut()',
+                    content: '<i class="fas fa-walking"></i>',
+                    buttonColorClass: 'btn-primary',
+                    buttonClasses: 'ms-2',
+                    spanClasses: 'p',
+                    buttonStyle: 'background-color: #191919;padding: .3rem .65rem;',
+                    spanStyle: ''
+                })}
+                
             </div>
         </div>
     </nav>

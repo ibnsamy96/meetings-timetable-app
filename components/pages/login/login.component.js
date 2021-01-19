@@ -1,3 +1,7 @@
+import {
+    getSharedComponentCode
+} from "../../../components-manager.js";
+
 export const LoginComponent = {
     render: () => {
         return `
@@ -6,10 +10,17 @@ export const LoginComponent = {
             <h1 class="h2 mb-3 pageHeadingText"> أهلًا بيك صديقي الليدر المعوي العزيز <i
                     class="h4 fw-bolder fas fa-heart" style="color: #e85a71;"></i>
             </h1>
-            <button class="btn btn-primary primaryBoxShadow" onclick="signIn()" id='fbSignInBtn'>
-                <span class="h6">SIGN IN</span>
-                <!-- <img src="./assets/images/fbSignInBtn.svg" /> -->
-            </button>
+            ${getSharedComponentCode('button', {
+                id: 'fbSignInBtn',
+                activationMethod: 'signIn()',
+                content: 'SIGN IN',
+                buttonColorClass:'btn-primary',
+                buttonClasses:'ms-2',
+                spanClasses:'h6',
+                buttonStyle: '',
+                spanStyle: ''
+            })}
+ 
             <div id='fbLoginSpinner' class="d-none spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
