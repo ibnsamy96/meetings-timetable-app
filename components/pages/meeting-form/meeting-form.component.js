@@ -64,11 +64,29 @@ export const MeetingFormComponent = {
                 ]
             })}
 
+            ${QuestionComponent.renderDate({
+                id : 'meetingDate',
+                questionContent : 'ادخل التاريخ',
+            })}
+
+            ${QuestionComponent.renderTime({
+                id : 'meetingTime',
+                questionContent : 'ادخل الوقت',
+            })}
+
             
 
             </ol>
-            <p id='warning' class = 'h6 d-none'>يجب اختيار إجابة واحدة على الأقل في كل سؤال!</p>
-            
+            <p id='warning-formNotCompleted' class = 'h6 d-none'>يجب اختيار إجابة واحدة على الأقل في كل سؤال!</p>
+            <p id='warning-timeNotFormattedProperly' class = 'h6 d-none'>لم يتم كتابة الوقت بشكل صحيح!
+            <br/>
+            يجب أن يكون الوقت مكتوب على هيئة hours:minutes و حدود الدقائق هي [00-59] بينما حدود الساعات هي [00-23]
+            </p>
+            <p id='warning-dateNotFormattedProperly' class = 'h6 d-none'>لم يتم كتابة التاريخ بشكل صحيح!
+            <br/>
+            يجب أن تكون حدود اليوم [1-31] و حدود الشهر [1-12] و أن يكون العام ضمن القرن الواحد و العشرين
+            </p>
+
 
             ${getSharedComponentCode('button',{btnData: {
                 id: 'fireCheckMeetingForm',

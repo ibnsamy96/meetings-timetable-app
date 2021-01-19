@@ -1,5 +1,10 @@
 let questions;
 
+const timeRegex = /^(2[0-3]|[0-1][0-9]):[0-5][0-9]$/
+// const dateRegex = /^[1-31]\/[1-12]\/2021$/
+const dateRegex = /^20([2-9][1-9]|[3-9]0)\/(1[0-2]|[1-9])\/([1-9]|[1-2][0-9]|3[01])$/
+
+
 export const disableMeetingForm = (state) => {
     document.querySelector('#fireCheckMeetingForm').disabled = state
     document.querySelector('#fireSubmitMeetingForm').classList.toggle('d-none', !state)
@@ -27,13 +32,50 @@ export const checkMeetingForm = () => {
         }
     })
 
+    const answersOfTimeQuestions = [...document.querySelectorAll('li.timeQuestion>div.timeQuestion')]
+    const dateQuestions = [...document.querySelectorAll('li.dateQuestion')]
+    const answersOfDateQuestions = dateQuestions.map(question => {
+        return {
+            day: question.querySelector('#dateDay'),
+            month: question.querySelector('#dateMonth'),
+            year: question.querySelector('#dateYear')
+        }
+    })
+    console.log(answersOfDateQuestions);
 
 
     if (questions.some(question => question.answers.length < 1)) {
-        document.querySelector('#warning').classList.remove('d-none')
+        // some questions have no answers
+        document.querySelector('#warning-formNotCompleted').classList.remove('d-none')
     } else {
-        document.querySelector('#warning').classList.add('d-none')
-        disableMeetingForm(true)
+        //good, all questions have answers
+        document.querySelector('#warning-formNotCompleted').classList.add('d-none')
+
+        if (!answersOfTimeQuestions.every(answerDiv => timeRegex.test(answerDiv.innerText))) {
+            // some time elements aren't formatted properly
+            document.querySelector('#warning-timeNotFormattedProperly').classList.remove('d-none')
+
+        } else {
+            //good, all time elements are formatted properly
+            document.querySelector('#warning-timeNotFormattedProperly').classList.add('d-none')
+
+
+            if (!answersOfDateQuestions.every(answerObject => {
+                    const answerDiv = `${answerObject.year.innerText.trim()}/${answerObject.month.innerText.trim()}/${answerObject.day.innerText.trim()}`
+                    console.log(answerDiv);
+                    return dateRegex.test(answerDiv)
+                })) {
+                // some date elements aren't formatted properly
+                document.querySelector('#warning-dateNotFormattedProperly').classList.remove('d-none')
+
+            } else {
+                //good, all date elements are formatted properly
+                document.querySelector('#warning-dateNotFormattedProperly').classList.add('d-none')
+                disableMeetingForm(true)
+
+            }
+
+        }
     }
 }
 

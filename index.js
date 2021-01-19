@@ -174,7 +174,9 @@ window.routeToNewMeeting = (pageBtn) => {
 }
 
 window.fireChooseThisChoice = (selectedElement) => {
-    chooseThisChoice(selectedElement)
+    if (!(selectedElement.classList.contains('timeQuestion') || selectedElement.classList.contains('dateQuestion'))) {
+        chooseThisChoice(selectedElement)
+    }
     if (isMeetingFormDisabled) {
         isMeetingFormDisabled = false
         disableMeetingForm(false)

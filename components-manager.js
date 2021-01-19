@@ -63,7 +63,7 @@ export const getSharedComponentCode = (key, componentParameters = {
     }
 }) => {
     const [component] = sharedComponentsRouter.filter(component => component.key === key)
-    console.log(componentParameters.btnData);
+    // console.log(componentParameters.btnData);
     if (component.key === 'button') {
         const handledButtonObject = handleButtonAttributes(componentParameters.btnData)
         return component.component.render(handledButtonObject)
