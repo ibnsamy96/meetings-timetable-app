@@ -11,7 +11,7 @@ export const NavbarComponent = {
             <div id='controlBtns' class="d-flex d-none">
                 
 
-                ${getSharedComponentCode('button', {
+                ${getSharedComponentCode('button', {btnData: {
                     id: 'newMeetingBtn',
                     activationMethod: 'routeToNewMeeting(this)',
                     content: {atSmallScreen:'<i class="far fa-calendar-plus"></i>',atNotSmallScreen:'أضف اجتماع'},
@@ -20,10 +20,10 @@ export const NavbarComponent = {
                     spanClasses:{atSmallScreen:'h1',atNotSmallScreen:'p'},
                     buttonStyle: '',
                     spanStyle: ''
-                })}
+                }})}
                 
      
-                ${getSharedComponentCode('button',{
+                ${getSharedComponentCode('button',{btnData:{
                     id: 'fbSignOutBtn',
                     activationMethod: 'signOut()',
                     content: '<i class="fas fa-walking"></i>',
@@ -32,7 +32,7 @@ export const NavbarComponent = {
                     spanClasses: 'p',
                     buttonStyle: 'background-color: #191919;padding: .3rem .65rem;',
                     spanStyle: ''
-                })}
+                }})}
                 
             </div>
         </div>

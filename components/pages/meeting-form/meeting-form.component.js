@@ -70,7 +70,7 @@ export const MeetingFormComponent = {
             <p id='warning' class = 'h6 d-none'>يجب اختيار إجابة واحدة على الأقل في كل سؤال!</p>
             
 
-            ${getSharedComponentCode('button', {
+            ${getSharedComponentCode('button',{btnData: {
                 id: 'fireCheckMeetingForm',
                 activationMethod: 'fireCheckMeetingForm()',
                 content: "تأكّد من تفرّغ الأعضاء",
@@ -79,9 +79,9 @@ export const MeetingFormComponent = {
                 spanClasses:"",
                 buttonStyle: '',
                 spanStyle: ''
-            })}
+            }})}
             
-            ${getSharedComponentCode('button', {
+            ${getSharedComponentCode('button',{btnData: {
                 id: 'fireSubmitMeetingForm',
                 activationMethod: 'fireSubmitMeetingForm()',
                 content: "تم التأكّد/أضف الاجتماع",
@@ -90,7 +90,7 @@ export const MeetingFormComponent = {
                 spanClasses:"",
                 buttonStyle: '',
                 spanStyle: ''
-            })}
+            }})}
         </div>
         </section>
         `

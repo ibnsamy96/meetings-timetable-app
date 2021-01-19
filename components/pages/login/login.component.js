@@ -10,7 +10,7 @@ export const LoginComponent = {
             <h1 class="h2 mb-3 pageHeadingText"> أهلًا بيك صديقي الليدر المعوي العزيز <i
                     class="h4 fw-bolder fas fa-heart" style="color: #e85a71;"></i>
             </h1>
-            ${getSharedComponentCode('button', {
+            ${getSharedComponentCode('button', {btnData:{
                 id: 'fbSignInBtn',
                 activationMethod: 'signIn()',
                 content: 'SIGN IN',
@@ -19,7 +19,7 @@ export const LoginComponent = {
                 spanClasses:'h6',
                 buttonStyle: '',
                 spanStyle: ''
-            })}
+            }})}
  
             <div id='fbLoginSpinner' class="d-none spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>

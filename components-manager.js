@@ -51,18 +51,21 @@ export const getPageComponentCode = (key) => {
 
 }
 
-export const getSharedComponentCode = (key, btnData = {
-    id: '',
-    activationMethod: '',
-    content: '',
-    buttonClasses: '',
-    spanClasses: '',
-    buttonStyle: '',
-    spanStyle: ''
+export const getSharedComponentCode = (key, componentParameters = {
+    btnData: {
+        id: '',
+        activationMethod: '',
+        content: '',
+        buttonClasses: '',
+        spanClasses: '',
+        buttonStyle: '',
+        spanStyle: ''
+    }
 }) => {
     const [component] = sharedComponentsRouter.filter(component => component.key === key)
+    console.log(componentParameters.btnData);
     if (component.key === 'button') {
-        const handledButtonObject = handleButtonAttributes(btnData)
+        const handledButtonObject = handleButtonAttributes(componentParameters.btnData)
         return component.component.render(handledButtonObject)
     } else {
         return component.component.render()
