@@ -60,8 +60,10 @@ nav {
     transition: all 0.1s ease-in-out;
 }
 
+.primaryBoxShadow:active,
 .primaryBoxShadow:hover,
-.primaryBoxShadow:focus {
+.primaryBoxShadow:focus,
+.primaryBoxShadow:active:focus {
     box-shadow: 0 0px 15px var(--boxShadowColor);
 }
 
