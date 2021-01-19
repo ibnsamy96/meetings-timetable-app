@@ -14,10 +14,10 @@ export const NavbarComponent = {
                 ${getSharedComponentCode('button', {btnData: {
                     id: 'newMeetingBtn',
                     activationMethod: 'routeToNewMeeting(this)',
-                    content: {atSmallScreen:'<i class="far fa-calendar-plus"></i>',atNotSmallScreen:'أضف اجتماع'},
+                    content: 'أضف اجتماع',
                     buttonColorClass: 'btn-primary',
                     buttonClasses:'ms-2',
-                    spanClasses:{atSmallScreen:'h1',atNotSmallScreen:'p'},
+                    spanClasses:'p',
                     buttonStyle: '',
                     spanStyle: ''
                 }})}
@@ -40,3 +40,20 @@ export const NavbarComponent = {
         `
     }
 }
+
+
+/*
+
+
+${getSharedComponentCode('button', {btnData: {
+                    id: 'newMeetingBtn',
+                    activationMethod: 'routeToNewMeeting(this)',
+                    content: {atSmallScreen:'<i class="far fa-calendar-plus"></i>',atNotSmallScreen:'أضف اجتماع'},
+                    buttonColorClass: 'btn-primary',
+                    buttonClasses:'ms-2',
+                    spanClasses:{atSmallScreen:'h1',atNotSmallScreen:'p'},
+                    buttonStyle: '',
+                    spanStyle: ''
+                }})}
+
+*/
