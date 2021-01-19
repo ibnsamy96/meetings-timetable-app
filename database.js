@@ -99,14 +99,15 @@ teams - methods: get - pages: get@new_meeting_page
 */
 
 export const getTeams = async () => {
+	// database has branches not teams
 	const loginEndpointUrl = databaseApi + endPoints.teams
 	const userToken = restoreUserToken()
 	const teams = await getData(loginEndpointUrl, userToken) // {team1Id:{team1Value},team2Id:{teamValue} ...}
-	const teamsIds = Object.keys(teams) // ids of all teams
-	const teamsData = teamsIds.map(teamId => {
+	const branchesIds = Object.keys(teams) // ids of all teams
+	const teamsData = branchesIds.map(branchId => {
 		// returned value -> {team1Id,team1Value}
 		return {
-			teamId,
+			branchId,
 			...teams[teamId]
 		}
 	})

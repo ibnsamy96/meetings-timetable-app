@@ -32,8 +32,8 @@ export const MeetingFormComponent = {
                 isMultiple : 'false',
                 questionContent : 'اختر نوع المعاد',
                 choices : [
-                    {id:'y',content:'معاد نهائي'},
-                    {id:'n',content:'معاد محتمل'}
+                    {id:'yes',content:'معاد نهائي'},
+                    {id:'no',content:'معاد محتمل'}
                 ]
             })}   
 
