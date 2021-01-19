@@ -5,7 +5,7 @@ export const ChoiceComponent = {
     }) => {
         return `
         <div id="${choiceData.id}" class="h5 fw-normal choice choiceSelected secondaryBoxShadow  mt-2 btn btn-info"
-        onclick="chooseThisChoice(this)">${choiceData.content}</div>
+        onclick="fireChooseThisChoice(this)">${choiceData.content}</div>
         `
     }
 }

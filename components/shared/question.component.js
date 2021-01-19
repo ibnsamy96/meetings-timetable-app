@@ -3,7 +3,7 @@ import {
 } from "./choice.component.js";
 
 export const QuestionComponent = {
-    render: (questionData = {
+    renderSelect: (questionData = {
         id: '',
         isMultiple: 'false',
         questionContent: '',
@@ -18,7 +18,16 @@ export const QuestionComponent = {
         ${ questionData.choices.map(choiceData => ChoiceComponent.render(choiceData)).join('')}
     </li>
         `
-    }
+    },
+    renderDate: () => {
+
+    },
+    renderTime: () => {
+
+    },
+    renderInput: () => {
+
+    },
 }
 
 

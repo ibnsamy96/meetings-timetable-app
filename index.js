@@ -13,8 +13,23 @@ import {
     getSharedComponentCode
 } from "./components-manager.js";
 
+import {
+    disableMeetingForm,
+    checkMeetingForm,
+    submitMeetingForm
+} from "./components/pages/meeting-form/meeting-form.js";
+
+import {
+    chooseThisChoice
+} from "./components/shared/choice.js";
+
+// next boolean indicates if user signed in -> will be true at sign in manually or automatically and will be false at sign out
 let isSignedIn
 let userToken
+
+// next boolean indicates if meeting form is disabled -> if user clicked 'checkForm' button it will be disabled until he clicks on another choice
+let isMeetingFormDisabled = false
+
 
 const mainRouter = (pageName) => {
     //function to replace main element with the right pageComponent
@@ -138,64 +153,21 @@ window.routeToNewMeeting = (pageBtn) => {
     mainRouter('meeting-form')
 }
 
-window.chooseThisChoice = (selectedElement) => {
-    // console.log(selectedElement);
-    console.log(typeof selectedElement.parentElement.dataset.multiple);
-    if (selectedElement.parentElement.dataset.multiple === 'true') {
-        selectedElement.classList.toggle('btn-success')
-        selectedElement.classList.toggle('btn-info')
-    } else {
-        if (selectedElement.classList.contains('btn-info')) {
-
-            [...selectedElement.parentElement.children].splice(1).forEach(choice => {
-                // console.log(choice);
-                choice.classList.remove('btn-success')
-                choice.classList.add('btn-info')
-            })
-
-        }
-        selectedElement.classList.toggle('btn-success')
-        selectedElement.classList.toggle('btn-info')
+window.fireChooseThisChoice = (selectedElement) => {
+    chooseThisChoice(selectedElement)
+    if (isMeetingFormDisabled) {
+        isMeetingFormDisabled = false
+        disableMeetingForm(false)
     }
-
-
 }
 
-window.checkMeetingForm = () => {
-    document.querySelector('#checkMeetingForm').disabled = true
-    document.querySelector('#submitMeetingForm').classList.remove('d-none')
+window.fireCheckMeetingForm = () => {
+    checkMeetingForm()
+    isMeetingFormDisabled = true
 }
 
-window.submitMeetingForm = () => {
-    const questions = [...document.querySelectorAll('li')].map(question => {
-        const answerChoices = [...question.children].splice(1)
-        const chosenAnswers = answerChoices.filter(choice => {
-                const isChoiceSelected = choice.classList.contains('btn-success')
-                return isChoiceSelected
-            })
-            .map(selectedElement => {
-                return {
-                    id: selectedElement.id,
-                    content: selectedElement.innerText
-                }
-            })
-
-        return {
-            id: question.id,
-            answers: chosenAnswers
-        }
-    })
-
-
-    if (questions.some(question => question.answers.length < 1)) {
-        document.querySelector('#warning').classList.remove('d-none')
-    } else {
-        console.log(questions);
-        document.querySelector('#warning').classList.add('d-none')
-        document.querySelector('#newMeetingBtn').classList.remove('d-none')
-
-        // TODO route to home component instead of the login component
-        mainRouter('login')
-    }
-
+window.fireSubmitMeetingForm = () => {
+    submitMeetingForm()
+    // TODO route to home component instead of the login component
+    mainRouter('login')
 }
