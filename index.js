@@ -35,9 +35,10 @@ let userToken
 let isMeetingFormDisabled = false
 
 
-const mainRouter = (pageName) => {
+const mainRouter = async (pageName) => {
+    const x = await getPageComponentCode(pageName)
     //function to replace main element with the right pageComponent
-    document.querySelector('main').innerHTML = getPageComponentCode(pageName)
+    document.querySelector('main').innerHTML = x
     if (pageName === 'login') {
         calculateMainHeight()
     }
@@ -58,9 +59,9 @@ function calculateMainHeight() {
 window.addEventListener('resize', calculateMainHeight)
 
 
-const autoSignIn = () => {
+const autoSignIn = async () => {
     document.querySelector('header').innerHTML = getSharedComponentCode('navbar')
-    mainRouter('login')
+    await mainRouter('login')
 
     const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
     const fbSignInBtn = document.querySelector('#fbSignInBtn')
@@ -129,7 +130,7 @@ window.signIn = async () => {
 }
 
 window.signOut = async () => {
-    mainRouter('login')
+    await mainRouter('login')
 
     const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
     const fbSignOutBtn = document.querySelector('#fbSignOutBtn')
@@ -169,10 +170,10 @@ function updateLoggingUI(errorMessage = undefined) {
 }
 
 
-window.routeToNewMeeting = (pageBtn) => {
+window.routeToNewMeeting = async (pageBtn) => {
     // console.log(selectedElement);
     pageBtn.classList.add('d-none')
-    mainRouter('meeting-form')
+    await mainRouter('meeting-form')
 }
 
 window.fireChooseThisChoice = (selectedElement) => {
@@ -190,8 +191,8 @@ window.fireCheckMeetingForm = () => {
     isMeetingFormDisabled = true
 }
 
-window.fireSubmitMeetingForm = () => {
+window.fireSubmitMeetingForm = async () => {
     submitMeetingForm()
     // TODO route to home component instead of the login component
-    mainRouter('login')
+    await mainRouter('login')
 }

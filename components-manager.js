@@ -45,10 +45,10 @@ const isSmallScreen = window.innerWidth <= 767 ? true : false
 
 
 
-export const getPageComponentCode = (key) => {
+export const getPageComponentCode = async (key) => {
     const [component] = pagesRouter.filter(component => component.key === key)
-    return component.component.render()
 
+    return await component.component.render()
 }
 
 export const getSharedComponentCode = (key, componentParameters = {

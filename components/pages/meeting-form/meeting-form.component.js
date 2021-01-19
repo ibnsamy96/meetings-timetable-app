@@ -17,8 +17,10 @@ export const MeetingFormComponent = {
         teams = await getTeams()
     },
     render: async function () {
-        await this.initialize()
-
+        if (!teams) {
+            await this.initialize()
+        }
+        console.log(teams);
         return `
         <section id='meeting-form-component' class="pt-2 row">
         <div class="col">
