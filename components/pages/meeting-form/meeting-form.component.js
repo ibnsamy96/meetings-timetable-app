@@ -16,7 +16,7 @@ export const MeetingFormComponent = {
     initialize: async () => {
         teams = await getTeams()
     },
-    render: function () {
+    render: async function () {
         await this.initialize()
 
         return `
