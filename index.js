@@ -22,6 +22,9 @@ import {
 import {
     chooseThisChoice
 } from "./components/shared/choice.js";
+import {
+    LoginComponent
+} from "./components/pages/login/login.component.js";
 
 // next boolean indicates if user signed in -> will be true at sign in manually or automatically and will be false at sign out
 let isSignedIn
@@ -34,7 +37,24 @@ let isMeetingFormDisabled = false
 const mainRouter = (pageName) => {
     //function to replace main element with the right pageComponent
     document.querySelector('main').innerHTML = getPageComponentCode(pageName)
+    if (pageName === 'login') {
+        calculateMainHeight()
+    }
 }
+
+function calculateMainHeight() {
+    const navbarHeightPlusPadding = 40 + 16
+    const mainElementYMargin = 24
+    const mainHeight = window.innerHeight - navbarHeightPlusPadding - mainElementYMargin;
+    document.querySelector('main').style.height = `${mainHeight}px`
+    const loginSection = document.querySelector('#login-component')
+    if (loginSection) {
+        document.querySelector('#login-component').style.height = `${mainHeight}px`
+    }
+
+}
+
+window.addEventListener('resize', calculateMainHeight)
 
 
 const autoSignIn = () => {

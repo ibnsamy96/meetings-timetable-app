@@ -37,11 +37,6 @@ nav {
     box-shadow: var(--boxShadowPlaceOfNav) var(--boxShadowBlurOfNav) var(--boxShadowColor);
 }
 
-.mainHeight {
-    min-height: calc(100% - (40px + 16px) - 24px);
-}
-
-
 .pageHeadingText {
     color: var(--primaryFontColor);
 }
