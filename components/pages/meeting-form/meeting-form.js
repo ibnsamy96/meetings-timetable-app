@@ -32,6 +32,10 @@ const questionsList = [{
         isMultiple: 'false',
         questionContent: 'اختر الفرع',
     }, {
+        id: 'branch2',
+        isMultiple: 'false',
+        questionContent: 'اختر2 الفرع',
+    }, {
         isMultiple: 'false',
         questionContent: 'اختر الفريق',
     }
@@ -48,17 +52,30 @@ const appendQuestion = (nextQuestionHTML) => {
 
 export const showNextQuestion = (selectedElement) => {
     if (selectedElement) {
-        console.log(selectedElement.parentElement.querySelectorAll('.btn-success').length);
 
-        console.log(selectedElement);
+        // console.log(selectedElement.parentElement.querySelectorAll('.btn-success').length);
+
+        // console.log(selectedElement);
         const clickedQuestionIndex = questionsList.findIndex(question => question.questionContent === selectedElement.parentElement.firstElementChild.innerText.trim())
         console.log('clickedQuestionIndex ' + clickedQuestionIndex);
         console.log('nextQuestionIndex ' + nextQuestionIndex);
 
         if (nextQuestionIndex - clickedQuestionIndex !== 1) {
             // if selectedElement wasn't of the last question, then don't append a new question
+            if (clickedQuestionIndex > 0) {
+                // selectedElement wasn't of the first question, then reload choices using selected choice
+                // remove all next questions -> change nextQuestionIndex -> recall the function if a choice was made not removed
+                while (document.querySelector('#meeting-form-component .col ol').lastElementChild.id !== selectedElement.parentElement.id) {
+                    document.querySelector('#meeting-form-component .col ol').lastElementChild.remove()
+                }
+                nextQuestionIndex = clickedQuestionIndex + 1
+                if (selectedElement.classList.contains('btn-success')) {
+                    showNextQuestion(selectedElement)
+                }
+            }
             return
         }
+
 
         if (!selectedElement.classList.contains('btn-success')) {
             // if selectedElement doesn't has 'btn-success' then this method doesn't need to continue
@@ -87,6 +104,19 @@ export const showNextQuestion = (selectedElement) => {
             })
             break;
         case 2:
+
+            const branchesChoices2 = branches.map(branch => {
+                return {
+                    id: branch.branchCode,
+                    content: branch.branchName
+                }
+            })
+            nextQuestionHTML = QuestionComponent.renderSelect({
+                choices: branchesChoices2,
+                ...questionsList[nextQuestionIndex],
+            })
+            break;
+        case 3:
             const id = selectedElement.id + '-team'
             const branchTeamsChoices = branches.filter(branch => branch.branchCode === selectedElement.id).map(branch => {
                 const branchTeams = branch.teams
