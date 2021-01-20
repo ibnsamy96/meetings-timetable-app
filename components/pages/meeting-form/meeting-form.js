@@ -14,10 +14,12 @@ const dateRegex = /^20([2-9][1-9]|[3-9]0)\/(1[0-2]|[1-9])\/([1-9]|[1-2][0-9]|3[0
 
 let branches;
 
-const questionsList = [{
+let questionsList;
+// TODO remove next variable if not user
+const temporaryQuestionsList = [{
         id: 'isFinal',
         isMultiple: 'false',
-        questionContent: 'اختر نوع المعاد',
+        questionContent: 'ما نوع المعاد؟',
         choices: [{
                 id: 'yes',
                 content: 'معاد نهائي'
@@ -27,18 +29,111 @@ const questionsList = [{
                 content: 'معاد محتمل'
             }
         ]
-    }, {
+    },
+    {
         id: 'branch',
         isMultiple: 'false',
-        questionContent: 'اختر الفرع',
+        questionContent: 'في أي فرع؟',
     }, {
         isMultiple: 'false',
-        questionContent: 'اختر الفريق',
+        questionContent: 'في أي فريق؟',
     }
 
 ]
 
 let nextQuestionIndex = 0
+
+function questionEnhancer(selectedElement) {
+
+    // function to handel next question after the second one
+
+    const isMultiple = false
+    const questionId = selectedElement.id
+
+    if (selectedElement.parentElement.id !== 'branch') {
+        // next team is a subTeam question 
+        const questionContent = "في أي فريق فرعي بفريق " + selectedElement.innerText + "؟"
+
+        // selectedElementId.parent.id format = gam3a-ta3alom-tawasol => this question represents choices of tawasol's sub-teams
+        const parentIdArray = selectedElement.parentElement.id.split('-')
+        const nextQuestionIndexWillBe = 0 + 1 + parentIdArray.length()
+
+        const thisTeamData = branches.find(branch => branch.branchCode === parentIdArray[0]).teams.find(team => team.teamCode === parentIdArray[1])
+
+    } else {
+        // next team is a mainTeam question
+        if (selectedElement.id === 'gam3a') {
+            const questionContent = "أي فريق بمعًا الجامعة؟"
+        } else {
+            const questionContent = "في أي فريق بفرع " + selectedElement.innerText + "؟"
+        }
+
+        const thisBranchData = branches.filter(branch => branch.branchCode === selectedElement.id)
+        thisBranchData.teams.forEach(team => {
+            choices.push({
+                id: team.teamCode,
+                content: teamName
+            })
+        });
+
+    }
+
+    const choices = []
+
+
+    // TODO enhance question and return it
+    // return enhancedQuestion
+
+}
+
+export const updateQuestionsList = (selectedElement) => {
+    // loads to update questionList depending on branch and its teams
+    // loads at every selection and loads the whole question list according to the clicked choice
+
+    questionsList = []
+
+    const meetingTypeQuestion = {
+        id: 'isFinal',
+        isMultiple: 'false',
+        questionContent: 'ما نوع المعاد؟',
+        choices: [{
+                id: 'yes',
+                content: 'معاد نهائي'
+            },
+            {
+                id: 'no',
+                content: 'معاد محتمل'
+            }
+        ]
+    }
+
+
+    const branchQuestion = {
+        id: 'branch',
+        isMultiple: 'false',
+        questionContent: 'في أي فرع؟',
+    }
+
+    questionsList.push(meetingTypeQuestion)
+    questionsList.push(branchQuestion)
+
+    if (!selectedElement) return // 
+
+
+
+    const nextQuestion = questionEnhancer(selectedElement)
+
+
+
+
+
+
+    console.log(branches);
+
+
+    showNextQuestion(selectedElement)
+
+}
 
 const appendQuestion = (nextQuestionHTML) => {
     const nextQuestionElement = document.createElement('li')
@@ -52,7 +147,7 @@ export const showNextQuestion = (selectedElement) => {
         // console.log(selectedElement.parentElement.querySelectorAll('.btn-success').length);
 
         // console.log(selectedElement);
-        const clickedQuestionIndex = questionsList.findIndex(question => question.questionContent === selectedElement.parentElement.firstElementChild.innerText.trim())
+        const clickedQuestionIndex = temporaryQuestionsList.findIndex(question => question.questionContent === selectedElement.parentElement.firstElementChild.innerText.trim())
         console.log('clickedQuestionIndex ' + clickedQuestionIndex);
         console.log('nextQuestionIndex ' + nextQuestionIndex);
 
@@ -79,11 +174,12 @@ export const showNextQuestion = (selectedElement) => {
         }
     }
 
-
+    console.log('hi');
     let nextQuestionHTML;
+
     switch (nextQuestionIndex) {
         case 0:
-            nextQuestionHTML = QuestionComponent.renderSelect(questionsList[nextQuestionIndex])
+            nextQuestionHTML = QuestionComponent.renderSelect(temporaryQuestionsList[nextQuestionIndex])
 
             break;
         case 1:
@@ -96,7 +192,7 @@ export const showNextQuestion = (selectedElement) => {
             })
             nextQuestionHTML = QuestionComponent.renderSelect({
                 choices: branchesChoices,
-                ...questionsList[nextQuestionIndex],
+                ...temporaryQuestionsList[nextQuestionIndex],
             })
             break;
         case 2:
@@ -118,7 +214,7 @@ export const showNextQuestion = (selectedElement) => {
             nextQuestionHTML = QuestionComponent.renderSelect({
                 id,
                 choices: branchTeamsChoices,
-                ...questionsList[nextQuestionIndex],
+                ...temporaryQuestionsList[nextQuestionIndex],
             })
             break;
         default:
@@ -126,7 +222,7 @@ export const showNextQuestion = (selectedElement) => {
             document.querySelector('#fireCheckMeetingForm').disabled = false
             break;
     }
-    if (nextQuestionIndex < questionsList.length) {
+    if (nextQuestionIndex < temporaryQuestionsList.length) {
         nextQuestionIndex += 1
         appendQuestion(nextQuestionHTML)
     } else {
@@ -142,12 +238,16 @@ export const initializeForm = async () => {
         console.log('getting branches');
         branches = await getTeams()
         showNextQuestion()
+        // TODO remove showNextQuestion and uncomment updateQuestionsList()
+        // updateQuestionsList()
     } else {
         console.log('branches is cached');
         const isFormExist = setInterval(() => {
             console.log('in interval');
             if (document.querySelector('#meeting-form-component .col ol')) {
                 showNextQuestion()
+                // TODO remove showNextQuestion and uncomment updateQuestionsList()
+                // updateQuestionsList()
                 clearInterval(isFormExist)
             }
 

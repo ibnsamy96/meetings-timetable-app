@@ -1,5 +1,6 @@
 import {
-    showNextQuestion
+    showNextQuestion,
+    updateQuestionsList
 } from "../pages/meeting-form/meeting-form.js";
 
 export const chooseThisChoice = (selectedElement) => {
@@ -23,8 +24,9 @@ export const chooseThisChoice = (selectedElement) => {
     }
 
     // if the user un-choose a choice, don't show next question
-    showNextQuestion(selectedElement);
-
+    showNextQuestion(selectedElement)
+    // TODO remove showNextQuestion and uncomment updateQuestionsList
+    // updateQuestionsList(selectedElement)
 
 
 }

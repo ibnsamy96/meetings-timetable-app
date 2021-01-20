@@ -21,18 +21,6 @@ export const MeetingFormComponent = {
             <h1 class="h2 mb-3 pageHeadingText">أضف اجتماع</h1>
             <ol>
 
- 
-
-            ${QuestionComponent.renderDate({
-                id : 'meetingDate',
-                questionContent : 'ادخل التاريخ',
-            })}
-            
-            ${QuestionComponent.renderTime({
-                id : 'meetingTime',
-                questionContent : 'ادخل الوقت',
-            })}
-
             
 
             </ol>
