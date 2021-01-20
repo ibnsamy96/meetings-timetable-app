@@ -46,8 +46,9 @@ const mainRouter = async (pageName) => {
 
 function calculateMainHeight() {
     const navbarHeightPlusPadding = 40 + 16
-    const mainElementYMargin = 24
-    const mainHeight = window.innerHeight - navbarHeightPlusPadding - mainElementYMargin;
+    const mainElementTopMargin = 24
+    const mainElementBottomPadding = 24
+    const mainHeight = window.innerHeight - navbarHeightPlusPadding - mainElementTopMargin - mainElementBottomPadding;
     document.querySelector('main').style.height = `${mainHeight}px`
     const loginSection = document.querySelector('#login-component')
     if (loginSection) {

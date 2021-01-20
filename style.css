@@ -85,8 +85,8 @@ nav {
 }
 
 #login-component {
-    position: relative;
-    z-index: 10;
+    /* position: relative; */
+    /* z-index: 10; */
     /* top: 50px; */
 }
 

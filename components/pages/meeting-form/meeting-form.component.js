@@ -16,7 +16,7 @@ export const MeetingFormComponent = {
         initializeForm()
 
         return `
-        <section id='meeting-form-component' class="pt-2 row">
+        <section id='meeting-form-component' class="pt-2 mt-4 pb-4 row">
         <div class="col">
             <h1 class="h2 mb-3 pageHeadingText">أضف اجتماع</h1>
             <ol>
