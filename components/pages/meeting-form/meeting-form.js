@@ -31,6 +31,9 @@ const questionsList = [{
         id: 'branch',
         isMultiple: 'false',
         questionContent: 'اختر الفرع',
+    }, {
+        isMultiple: 'false',
+        questionContent: 'اختر الفريق',
     }
 
 ]
@@ -43,15 +46,18 @@ const appendQuestion = (nextQuestionHTML) => {
     nextQuestionElement.outerHTML = nextQuestionHTML
 }
 
-export const showNextQuestion = (parentElementId) => {
-    // console.log(answeredQuestionID);
-    const clickedQuestionIndex = questionsList.findIndex(question => question.id === parentElementId)
-    console.log(clickedQuestionIndex);
-    console.log(nextQuestionIndex);
+export const showNextQuestion = (selectedElement) => {
+    if (selectedElement) {
+        console.log(selectedElement);
+        const clickedQuestionIndex = questionsList.findIndex(question => question.id === selectedElement.parentElement.id)
+        console.log('clickedQuestionIndex ' + clickedQuestionIndex);
+        console.log('nextQuestionIndex ' + nextQuestionIndex);
 
-    if (nextQuestionIndex - clickedQuestionIndex !== 1) {
-        return
+        if (nextQuestionIndex - clickedQuestionIndex !== 1) {
+            return
+        }
     }
+
 
     let nextQuestionHTML;
     switch (nextQuestionIndex) {
@@ -60,17 +66,39 @@ export const showNextQuestion = (parentElementId) => {
 
             break;
         case 1:
+
+            const branches = branches.map(branch => {
+                return {
+                    id: branch.branchCode,
+                    content: branch.branchName
+                }
+            })
             nextQuestionHTML = QuestionComponent.renderSelect({
-                choices: branches.map(branch => {
-                    return {
-                        id: branch.branchCode,
-                        content: branch.branchName
-                    }
-                }),
+                choices: branches,
                 ...questionsList[nextQuestionIndex],
             })
             break;
+        case 2:
+            const id = selectedElement.id + '-team'
+            const branchTeams = branches.filter(branch => branch.branchCode === selectedElement.id).map(branch => {
+                const branchTeams = branch.teams
+                return branchTeams.map(branchTeam => {
+                    console.log(branchTeam);
+                    return {
+                        id: branchTeam.teamCode,
+                        content: branchTeam.teamName
+                    }
 
+                })
+
+            })[0]
+            console.log(branchTeams);
+            nextQuestionHTML = QuestionComponent.renderSelect({
+                id,
+                choices: branchTeams,
+                ...questionsList[nextQuestionIndex],
+            })
+            break;
         default:
             document.querySelector('#fireCheckMeetingForm').disabled = false
             break;
@@ -84,9 +112,20 @@ export const showNextQuestion = (parentElementId) => {
 
 export const initializeForm = async () => {
     if (!branches) {
+        console.log('getting branches');
         branches = await getTeams()
+        showNextQuestion()
+    } else {
+        console.log('branches is cached');
+        const isFormExist = setInterval(() => {
+            console.log('in interval');
+            if (document.querySelector('#meeting-form-component .col ol')) {
+                showNextQuestion()
+                clearInterval(isFormExist)
+            }
+
+        }, 1)
     }
-    showNextQuestion()
     return branches
 }
 

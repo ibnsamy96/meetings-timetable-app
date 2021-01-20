@@ -5,16 +5,12 @@ import {
     initializeForm
 } from "./meeting-form.js";
 
-let isFormInitialized = false
 
 export const MeetingFormComponent = {
 
     render: async function () {
 
-        if (!isFormInitialized) {
-            initializeForm()
-            isFormInitialized = true
-        }
+        initializeForm()
 
         return `
         <section id='meeting-form-component' class="pt-2 row">
@@ -121,7 +117,7 @@ ${QuestionComponent.renderSelect({
 })}
 
 ${QuestionComponent.renderSelect({
-    id : 'ta3alom-SubTeams',
+    id : 'gam3a-ta3alom-subTeams',
     isMultiple : 'false',
     questionContent : 'اختر الفريق الفرعي',
     choices : [

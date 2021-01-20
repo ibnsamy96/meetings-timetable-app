@@ -24,7 +24,7 @@ export const chooseThisChoice = (selectedElement) => {
 
     if (selectedElement.classList.contains('btn-success')) {
         // if the user un-choose a choice, don't show next question
-        showNextQuestion(selectedElement.parentElement.id);
+        showNextQuestion(selectedElement);
     }
 
 
