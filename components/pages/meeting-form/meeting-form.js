@@ -92,6 +92,16 @@ export const updateQuestionsList = (selectedElement) => {
 
     questionsList = []
 
+    const firstTwoQuestions = [
+
+
+    ]
+
+    const lastTwoQuestions = [
+
+
+    ]
+
     const meetingTypeQuestion = {
         id: 'isFinal',
         isMultiple: 'false',
@@ -113,6 +123,25 @@ export const updateQuestionsList = (selectedElement) => {
         isMultiple: 'false',
         questionContent: 'في أي فرع؟',
     }
+
+
+
+    const timeQuestion = {
+        id: 'meetingDate',
+        questionContent: 'ادخل التاريخ',
+    }
+
+    const dateQuestion = {
+        id: 'meetingTime',
+        questionContent: 'ادخل الوقت',
+    }
+
+
+
+    const firstTwoQuestions = [meetingTypeQuestion, branchQuestion]
+
+    const lastTwoQuestions = [dateQuestion, timeQuestion]
+
 
     questionsList.push(meetingTypeQuestion)
     questionsList.push(branchQuestion)
