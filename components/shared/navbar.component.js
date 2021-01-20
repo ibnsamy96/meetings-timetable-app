@@ -27,10 +27,10 @@ export const NavbarComponent = {
                     id: 'fbSignOutBtn',
                     activationMethod: 'signOut()',
                     content: '<i class="fas fa-walking"></i>',
-                    buttonColorClass: 'btn-primary',
+                    buttonColorClass: 'btn-outline-info',
                     buttonClasses: 'ms-2',
                     spanClasses: 'p',
-                    buttonStyle: 'background-color: #191919;padding: .3rem .65rem;',
+                    buttonStyle: 'padding: .3rem .65rem;',
                     spanStyle: ''
                 }})}
                 

@@ -33,7 +33,7 @@ nav {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    /* background-color: #fff !important; */
+    background-color: #fff !important;
     overflow: auto;
     color: var(--primaryFontColor);
     position: relative;
@@ -56,14 +56,7 @@ nav {
     color: var(--primaryFontColor);
 }
 
-.btn-primary {
-    /* background-image: url('./assets/images/fbLoginBtn.svg'); */
-    /* width: 120px !important; */
-    background-color: #1877F2;
-    border: none !important;
-    color: white !important;
 
-}
 
 .primaryBoxShadow {
     box-shadow: var(--boxShadow);
@@ -101,6 +94,38 @@ nav {
     /* top: 50px; */
 }
 
+.btn-primary {
+    /* background-image: url('./assets/images/fbLoginBtn.svg'); */
+    /* width: 120px !important; */
+    background-color: #1877F2;
+    /* border: none !important; */
+    color: white !important;
+
+}
+
+.btn-outline-info {
+    /* background-color: #fff; */
+    /* border: none !important; */
+    /* color: white; */
+}
+
+.btn-outline-info:active,
+.btn-outline-info:hover {
+    /* background-color: #fff; */
+    /* border: none !important; */
+    color: white;
+}
+
+.btn-dark {
+    border: none !important;
+}
+
+.btn-dark:active,
+.btn-dark:hover,
+.btn-dark:focus {
+    background-color: #191919;
+}
+
 .btn-info {
     background-color: #F9F4F4;
     border: none !important;
@@ -129,12 +154,7 @@ nav {
         right: 5%;
         /* transform: translateX(50%); */
         /* border-radius: 50%; */
-        padding-top: 0.6rem;
-        padding-top: 0.6rem;
-        padding-right: 0.8rem;
-        padding-left: 0.8rem;
         z-index: 20;
-
     }
 
 
