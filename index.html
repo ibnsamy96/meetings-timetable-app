@@ -43,11 +43,23 @@
     <section id="closeTeamData" onclick=openTeamData(false) style="transition:all ease-in-out 500ms;background-color: aqua;
         position: absolute;
         z-index: 200;
-        top: 0;
+        top: 56px;
         right: -400px;
         bottom: 0px;
         width: 400px !important;">
     </section>
+    <div id='hideContent' class="d-none" style="transition:all ease-in-out 500ms;background-color: aqua;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 180;
+    -webkit-backdrop-filter:blur(4px);
+    backdrop-filter: blur(4px);
+    top: 56px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    ">
+    </div>
     <main id='root' class="container-md mt-4 mb-4" style="transition:all ease-in-out 500ms;">
     </main>
     <!-- <button id='signIn' style="display: inline;" onclick="signIn()">signIn</button>

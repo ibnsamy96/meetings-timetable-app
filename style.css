@@ -36,6 +36,8 @@ nav {
     /* background-color: #fff !important; */
     overflow: auto;
     color: var(--primaryFontColor);
+    position: relative;
+    z-index: 100000;
 }
 
 .navBoxShadow {

@@ -204,6 +204,7 @@ window.fireSubmitMeetingForm = async () => {
 const mainLeftMargin = parseFloat(getComputedStyle(document.querySelector('main')).marginLeft)
 document.querySelector('#root').style.marginLeft = mainLeftMargin.toString() + 'px';
 window.openTeamData = (doOpen) => {
+    document.querySelector('#hideContent').classList.toggle('d-none', !doOpen)
     const mainNewLeftMargin = doOpen ? mainLeftMargin * 0.2 : mainLeftMargin
     const teamDataNewRight = doOpen ? 0 : -400
     console.log(mainNewLeftMargin);
