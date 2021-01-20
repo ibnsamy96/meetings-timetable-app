@@ -32,10 +32,6 @@ const questionsList = [{
         isMultiple: 'false',
         questionContent: 'اختر الفرع',
     }, {
-        id: 'branch2',
-        isMultiple: 'false',
-        questionContent: 'اختر2 الفرع',
-    }, {
         isMultiple: 'false',
         questionContent: 'اختر الفريق',
     }
@@ -105,18 +101,6 @@ export const showNextQuestion = (selectedElement) => {
             break;
         case 2:
 
-            const branchesChoices2 = branches.map(branch => {
-                return {
-                    id: branch.branchCode,
-                    content: branch.branchName
-                }
-            })
-            nextQuestionHTML = QuestionComponent.renderSelect({
-                choices: branchesChoices2,
-                ...questionsList[nextQuestionIndex],
-            })
-            break;
-        case 3:
             const id = selectedElement.id + '-team'
             const branchTeamsChoices = branches.filter(branch => branch.branchCode === selectedElement.id).map(branch => {
                 const branchTeams = branch.teams
