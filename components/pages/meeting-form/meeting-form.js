@@ -48,12 +48,20 @@ const appendQuestion = (nextQuestionHTML) => {
 
 export const showNextQuestion = (selectedElement) => {
     if (selectedElement) {
+        console.log(selectedElement.parentElement.querySelectorAll('.btn-success').length);
+
         console.log(selectedElement);
-        const clickedQuestionIndex = questionsList.findIndex(question => question.id === selectedElement.parentElement.id)
+        const clickedQuestionIndex = questionsList.findIndex(question => question.questionContent === selectedElement.parentElement.firstElementChild.innerText.trim())
         console.log('clickedQuestionIndex ' + clickedQuestionIndex);
         console.log('nextQuestionIndex ' + nextQuestionIndex);
 
         if (nextQuestionIndex - clickedQuestionIndex !== 1) {
+            // if selectedElement wasn't of the last question, then don't append a new question
+            return
+        }
+
+        if (!selectedElement.classList.contains('btn-success')) {
+            // if selectedElement doesn't has 'btn-success' then this method doesn't need to continue
             return
         }
     }
@@ -67,20 +75,20 @@ export const showNextQuestion = (selectedElement) => {
             break;
         case 1:
 
-            const branches = branches.map(branch => {
+            const branchesChoices = branches.map(branch => {
                 return {
                     id: branch.branchCode,
                     content: branch.branchName
                 }
             })
             nextQuestionHTML = QuestionComponent.renderSelect({
-                choices: branches,
+                choices: branchesChoices,
                 ...questionsList[nextQuestionIndex],
             })
             break;
         case 2:
             const id = selectedElement.id + '-team'
-            const branchTeams = branches.filter(branch => branch.branchCode === selectedElement.id).map(branch => {
+            const branchTeamsChoices = branches.filter(branch => branch.branchCode === selectedElement.id).map(branch => {
                 const branchTeams = branch.teams
                 return branchTeams.map(branchTeam => {
                     console.log(branchTeam);
@@ -92,20 +100,25 @@ export const showNextQuestion = (selectedElement) => {
                 })
 
             })[0]
-            console.log(branchTeams);
+            console.log(branchTeamsChoices);
             nextQuestionHTML = QuestionComponent.renderSelect({
                 id,
-                choices: branchTeams,
+                choices: branchTeamsChoices,
                 ...questionsList[nextQuestionIndex],
             })
             break;
         default:
+            console.log('entered default');
             document.querySelector('#fireCheckMeetingForm').disabled = false
             break;
     }
     if (nextQuestionIndex < questionsList.length) {
         nextQuestionIndex += 1
         appendQuestion(nextQuestionHTML)
+    } else {
+        // // enable btn
+        // document.querySelector('#fireCheckMeetingForm').disabled = false
+
     }
 
 }

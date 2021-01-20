@@ -22,10 +22,9 @@ export const chooseThisChoice = (selectedElement) => {
         selectedElement.classList.toggle('btn-info')
     }
 
-    if (selectedElement.classList.contains('btn-success')) {
-        // if the user un-choose a choice, don't show next question
-        showNextQuestion(selectedElement);
-    }
+    // if the user un-choose a choice, don't show next question
+    showNextQuestion(selectedElement);
+
 
 
 }
