@@ -29,6 +29,9 @@ body {
 
 
 nav {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     /* background-color: #fff !important; */
     overflow: auto;
