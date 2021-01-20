@@ -197,3 +197,19 @@ window.fireSubmitMeetingForm = async () => {
     // TODO route to home component instead of the login component
     await mainRouter('login')
 }
+
+
+
+// next method to toggle team data section
+const mainLeftMargin = parseFloat(getComputedStyle(document.querySelector('main')).marginLeft)
+document.querySelector('#root').style.marginLeft = mainLeftMargin.toString() + 'px';
+window.openTeamData = (doOpen) => {
+    const mainNewLeftMargin = doOpen ? mainLeftMargin * 0.2 : mainLeftMargin
+    const teamDataNewRight = doOpen ? 0 : -400
+    console.log(mainNewLeftMargin);
+    console.log(mainNewLeftMargin.toString() + 'px');
+    document.querySelector('#root').style.marginLeft = mainNewLeftMargin.toString() + 'px';
+    document.querySelector('#closeTeamData').style.right = teamDataNewRight.toString() + 'px';
+    console.log(document.querySelector('#root'));
+    console.log(document.querySelector('#closeTeamData').style.right);
+}

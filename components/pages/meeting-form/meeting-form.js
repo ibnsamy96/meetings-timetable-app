@@ -92,16 +92,6 @@ export const updateQuestionsList = (selectedElement) => {
 
     questionsList = []
 
-    const firstTwoQuestions = [
-
-
-    ]
-
-    const lastTwoQuestions = [
-
-
-    ]
-
     const meetingTypeQuestion = {
         id: 'isFinal',
         isMultiple: 'false',
