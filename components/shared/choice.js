@@ -3,7 +3,6 @@ import {
 } from "../pages/meeting-form/meeting-form.js";
 
 export const chooseThisChoice = (selectedElement) => {
-    showNextQuestion(selectedElement.parentElement.id);
 
     console.log(selectedElement.innerText);
     if (selectedElement.parentElement.dataset.multiple === 'true') {
@@ -21,6 +20,11 @@ export const chooseThisChoice = (selectedElement) => {
         }
         selectedElement.classList.toggle('btn-success')
         selectedElement.classList.toggle('btn-info')
+    }
+
+    if (selectedElement.classList.contains('btn-success')) {
+        // if the user un-choose a choice, don't show next question
+        showNextQuestion(selectedElement.parentElement.id);
     }
 
 

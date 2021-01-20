@@ -1,83 +1,32 @@
 import {
-    QuestionComponent
-} from "../../shared/question.component.js";
-
-import {
     getSharedComponentCode
 } from "../../../components-manager.js";
-
 import {
-    getTeams
-} from "../../../database.js";
+    initializeForm
+} from "./meeting-form.js";
 
-let branches;
+let isFormInitialized = false
 
 export const MeetingFormComponent = {
-    initialize: async () => {
-        branches = await getTeams()
-    },
+
     render: async function () {
-        if (!branches) {
-            await this.initialize()
+
+        if (!isFormInitialized) {
+            initializeForm()
+            isFormInitialized = true
         }
-        console.log(branches);
+
         return `
         <section id='meeting-form-component' class="pt-2 row">
         <div class="col">
             <h1 class="h2 mb-3 pageHeadingText">أضف اجتماع</h1>
             <ol>
 
-            ${QuestionComponent.renderSelect({
-                id : 'isFinal',
-                isMultiple : 'false',
-                questionContent : 'اختر نوع المعاد',
-                choices : [
-                    {id:'yes',content:'معاد نهائي'},
-                    {id:'no',content:'معاد محتمل'}
-                ]
-            })}   
+ 
 
-            ${QuestionComponent.renderSelect({
-                id : 'branch',
-                isMultiple : 'false',
-                questionContent : 'اختر الفرع',
-                choices : branches.map(branch=>{return {id:branch.branchCode,content:branch.branchName}})
-            })}           
+<!--
 
-            ${QuestionComponent.renderSelect({
-                id : 'gam3a-Teams',
-                isMultiple : 'false',
-                questionContent : 'اختر الفريق',
-                choices : [
-                    {id:'pr',content:'العلاقات العامة'},
-                    {id:'hr',content:'الموارد البشرية'},
-                    {id:'media',content:'الميديا'},
-                    {id:'ta3alom',content:'إيفنت التعلّم'},
-                    {id:'fr',content:'الموارد المالية'}
-                ]
-            })}
-
-            ${QuestionComponent.renderSelect({
-                id : 'ta3alom-SubTeams',
-                isMultiple : 'false',
-                questionContent : 'اختر الفريق الفرعي',
-                choices : [
-                    {id:'pr',content:'العلاقات العامة'},
-                    {id:'hr',content:'الموارد البشرية'},
-                    {id:'media',content:'الميديا'},
-                    {id:'fr',content:'الموارد المالية'}
-                ]
-            })}
-
-            ${QuestionComponent.renderDate({
-                id : 'meetingDate',
-                questionContent : 'ادخل التاريخ',
-            })}
-
-            ${QuestionComponent.renderTime({
-                id : 'meetingTime',
-                questionContent : 'ادخل الوقت',
-            })}
+-->
 
             
 
@@ -135,5 +84,62 @@ ${QuestionComponent.renderSelect({
                 ]
             })}
 
+
+*/
+
+/*
+
+
+           ${QuestionComponent.renderSelect({
+                id : 'isFinal',
+                isMultiple : 'false',
+                questionContent : 'اختر نوع المعاد',
+                choices : [
+                    {id:'yes',content:'معاد نهائي'},
+                    {id:'no',content:'معاد محتمل'}
+                ]
+            })}   
+
+${QuestionComponent.renderSelect({
+    id : 'branch',
+    isMultiple : 'false',
+    questionContent : 'اختر الفرع',
+     choices : branches.map(branch=>{return {id:branch.branchCode,content:branch.branchName}})
+})}           
+
+${QuestionComponent.renderSelect({
+    id : 'gam3a-Teams',
+    isMultiple : 'false',
+    questionContent : 'اختر الفريق',
+    choices : [
+        {id:'pr',content:'العلاقات العامة'},
+        {id:'hr',content:'الموارد البشرية'},
+        {id:'media',content:'الميديا'},
+        {id:'ta3alom',content:'إيفنت التعلّم'},
+        {id:'fr',content:'الموارد المالية'}
+    ]
+})}
+
+${QuestionComponent.renderSelect({
+    id : 'ta3alom-SubTeams',
+    isMultiple : 'false',
+    questionContent : 'اختر الفريق الفرعي',
+    choices : [
+        {id:'pr',content:'العلاقات العامة'},
+        {id:'hr',content:'الموارد البشرية'},
+        {id:'media',content:'الميديا'},
+        {id:'fr',content:'الموارد المالية'}
+    ]
+})}
+
+${QuestionComponent.renderDate({
+    id : 'meetingDate',
+    questionContent : 'ادخل التاريخ',
+})}
+
+${QuestionComponent.renderTime({
+    id : 'meetingTime',
+    questionContent : 'ادخل الوقت',
+})}
 
 */

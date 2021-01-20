@@ -1,14 +1,98 @@
+import {
+    getTeams
+} from "../../../database.js";
+
+import {
+    QuestionComponent
+} from "../../shared/question.component.js";
+
 let questions;
 
 const timeRegex = /^(2[0-3]|[0-1][0-9]):[0-5][0-9]$/
 // const dateRegex = /^[1-31]\/[1-12]\/2021$/
 const dateRegex = /^20([2-9][1-9]|[3-9]0)\/(1[0-2]|[1-9])\/([1-9]|[1-2][0-9]|3[01])$/
 
-export const showNextQuestion = (selectedElement) => {
+let branches;
 
+const questionsList = [{
+        id: 'isFinal',
+        isMultiple: 'false',
+        questionContent: 'اختر نوع المعاد',
+        choices: [{
+                id: 'yes',
+                content: 'معاد نهائي'
+            },
+            {
+                id: 'no',
+                content: 'معاد محتمل'
+            }
+        ]
+    }, {
+        id: 'branch',
+        isMultiple: 'false',
+        questionContent: 'اختر الفرع',
+    }
 
+]
+
+let nextQuestionIndex = 0
+
+const appendQuestion = (nextQuestionHTML) => {
+    const nextQuestionElement = document.createElement('li')
+    document.querySelector('#meeting-form-component .col ol').appendChild(nextQuestionElement)
+    nextQuestionElement.outerHTML = nextQuestionHTML
+}
+
+export const showNextQuestion = (parentElementId) => {
+    // console.log(answeredQuestionID);
+    const clickedQuestionIndex = questionsList.findIndex(question => question.id === parentElementId)
+    console.log(clickedQuestionIndex);
+    console.log(nextQuestionIndex);
+
+    if (nextQuestionIndex - clickedQuestionIndex !== 1) {
+        return
+    }
+
+    let nextQuestionHTML;
+    switch (nextQuestionIndex) {
+        case 0:
+            nextQuestionHTML = QuestionComponent.renderSelect(questionsList[nextQuestionIndex])
+
+            break;
+        case 1:
+            nextQuestionHTML = QuestionComponent.renderSelect({
+                choices: branches.map(branch => {
+                    return {
+                        id: branch.branchCode,
+                        content: branch.branchName
+                    }
+                }),
+                ...questionsList[nextQuestionIndex],
+            })
+            break;
+
+        default:
+            document.querySelector('#fireCheckMeetingForm').disabled = false
+            break;
+    }
+    if (nextQuestionIndex < questionsList.length) {
+        nextQuestionIndex += 1
+        appendQuestion(nextQuestionHTML)
+    }
 
 }
+
+export const initializeForm = async () => {
+    if (!branches) {
+        branches = await getTeams()
+    }
+    showNextQuestion()
+    return branches
+}
+
+
+
+
 
 export const disableMeetingForm = (state) => {
     document.querySelector('#fireCheckMeetingForm').disabled = state
@@ -86,6 +170,7 @@ export const checkMeetingForm = () => {
 
 
 export const submitMeetingForm = () => {
+    nextQuestionIndex = 0
     document.querySelector('#newMeetingBtn').classList.remove('d-none')
     console.log(questions);
 }
