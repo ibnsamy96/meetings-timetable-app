@@ -46,6 +46,12 @@ nav {
     box-shadow: var(--boxShadowPlaceOfNav) var(--boxShadowBlurOfNav) var(--boxShadowColor);
 }
 
+.meetingMembersBoxShadow {
+    --boxShadowPlaceOfNav: -1px 0;
+    --boxShadowBlurOfNav: 10px;
+    box-shadow: var(--boxShadowPlaceOfNav) var(--boxShadowBlurOfNav) var(--boxShadowColor);
+}
+
 .pageHeadingText {
     color: var(--primaryFontColor);
 }

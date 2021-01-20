@@ -204,8 +204,19 @@ window.fireSubmitMeetingForm = async () => {
 const mainLeftMargin = parseFloat(getComputedStyle(document.querySelector('main')).marginLeft)
 document.querySelector('#root').style.marginLeft = mainLeftMargin.toString() + 'px';
 window.openTeamData = (doOpen) => {
-    document.querySelector('#hideContent').classList.toggle('d-none', !doOpen)
-    const mainNewLeftMargin = doOpen ? mainLeftMargin * 0.2 : mainLeftMargin
+    if (doOpen) {
+        document.querySelector('#hideContent').classList.remove('d-none')
+        setTimeout(() => {
+            document.querySelector('#hideContent').style.opacity = doOpen ? 1 : 0;
+        }, 1)
+    } else {
+        document.querySelector('#hideContent').style.opacity = doOpen ? 1 : 0;
+        setTimeout(() => {
+            document.querySelector('#hideContent').classList.add('d-none')
+        }, 501)
+    }
+
+    const mainNewLeftMargin = doOpen ? mainLeftMargin * 0.8 : mainLeftMargin
     const teamDataNewRight = doOpen ? 0 : -400
     console.log(mainNewLeftMargin);
     console.log(mainNewLeftMargin.toString() + 'px');
