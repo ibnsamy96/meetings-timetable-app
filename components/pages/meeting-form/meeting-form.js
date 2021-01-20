@@ -100,7 +100,7 @@ export const showNextQuestion = (selectedElement) => {
             })
             break;
         case 2:
-
+            0
             const id = selectedElement.id + '-team'
             const branchTeamsChoices = branches.filter(branch => branch.branchCode === selectedElement.id).map(branch => {
                 const branchTeams = branch.teams

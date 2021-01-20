@@ -20,9 +20,15 @@ export const MeetingFormComponent = {
 
  
 
-<!--
-
--->
+            ${QuestionComponent.renderDate({
+                id : 'meetingDate',
+                questionContent : 'ادخل التاريخ',
+            })}
+            
+            ${QuestionComponent.renderTime({
+                id : 'meetingTime',
+                questionContent : 'ادخل الوقت',
+            })}
 
             
 
