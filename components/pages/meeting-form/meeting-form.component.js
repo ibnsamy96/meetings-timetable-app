@@ -4,6 +4,9 @@ import {
 import {
     initializeForm
 } from "./meeting-form.js";
+import {
+    QuestionComponent
+} from "../../shared/question.component.js";
 
 
 export const MeetingFormComponent = {
