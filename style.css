@@ -145,7 +145,7 @@ nav {
     border: none !important;
     /* color: var(--black); */
 }
-
+.btn,.btn i{line-height:50%}
 
 @media (max-width: 767px) {
     #newMeetingBtn {
