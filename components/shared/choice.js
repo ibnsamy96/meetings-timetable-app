@@ -23,9 +23,8 @@ export const chooseThisChoice = (selectedElement) => {
         selectedElement.classList.toggle('btn-info')
     }
 
-    // if the user un-choose a choice, don't show next question
-    showNextQuestion(selectedElement)
     // TODO remove showNextQuestion and uncomment updateQuestionsList
+    showNextQuestion(selectedElement)
     // updateQuestionsList(selectedElement)
 
 

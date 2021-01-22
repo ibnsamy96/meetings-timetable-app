@@ -191,7 +191,7 @@ export const showNextQuestion = (selectedElement) => {
         console.log('clickedQuestionIndex ' + clickedQuestionIndex);
         console.log('nextQuestionIndex ' + nextQuestionIndex);
 
-        if (nextQuestionIndex - clickedQuestionIndex !== 1) {
+        if (nextQuestionIndex - clickedQuestionIndex > 1) {
             // if selectedElement wasn't of the last question, then don't append a new question
             if (clickedQuestionIndex > 0) {
                 // selectedElement wasn't of the first question, then reload choices using selected choice
@@ -210,6 +210,7 @@ export const showNextQuestion = (selectedElement) => {
 
         if (!selectedElement.classList.contains('btn-success')) {
             // if selectedElement doesn't has 'btn-success' then this method doesn't need to continue
+            // because the user un-choose a choice, don't show next question
             return
         }
     }
@@ -239,7 +240,7 @@ export const showNextQuestion = (selectedElement) => {
             const branchTeamsChoices = branches.filter(branch => branch.branchCode === selectedElement.id).map(branch => {
                 const branchTeams = branch.teams
                 return branchTeams.map(branchTeam => {
-                    console.log(branchTeam);
+                    // console.log(branchTeam);
                     return {
                         id: branchTeam.teamCode,
                         content: branchTeam.teamName
@@ -256,18 +257,26 @@ export const showNextQuestion = (selectedElement) => {
             })
             break;
         case 3:
-            const previousChoiceId = selectedElement.parentElement.id.split('-').pop.join('')
+            const previousChoiceIdArray = selectedElement.parentElement.id.split('-')
+            const branchCode = previousChoiceIdArray[0]
+            // const teamCode = previousChoiceIdArray[1]
+            console.log(previousChoiceIdArray);
+            const previousChoiceId = previousChoiceIdArray.slice(0, previousChoiceIdArray.length - 1).join('-')
             const selectedTeamId = selectedElement.id
-            const subTeamQuestionId = `${previousChoiceCode}-${selectedTeamId}-subTeams`
+            const subTeamQuestionId = `${previousChoiceId}-${selectedTeamId}-subTeams`
             console.log(selectedElement.parentElement.id);
             console.log(subTeamQuestionId);
 
-            const teamObject = branches.find(branch => branch.branchCode === branchCode).teams.find(team => teamCode === team.teamCode)
+            const teamObject = branches.find(branch => branch.branchCode === branchCode).teams.find(team => {
+                // console.log(team)
+                return previousChoiceIdArray.length > 2 ? previousChoiceIdArray[1] : selectedTeamId === team.teamCode
+            })
+            console.log(teamObject);
             const subTeamsArrayOfObject = teamObject.subTeam
 
             if (subTeamsArrayOfObject) {
                 const teamSubTeamsChoices = subTeamsArrayOfObject.map(subTeamObject => {
-                    console.log(subTeamObject);
+                    // console.log(subTeamObject);
                     return {
                         id: subTeamObject.teamCode,
                         content: subTeamObject.teamName
@@ -292,6 +301,7 @@ export const showNextQuestion = (selectedElement) => {
             break;
     }
     if (nextQuestionIndex < temporaryQuestionsList.length) {
+        console.log(' nextQuestionIndex ' + nextQuestionIndex);
         nextQuestionIndex += 1
         appendQuestion(nextQuestionHTML)
     } else {
