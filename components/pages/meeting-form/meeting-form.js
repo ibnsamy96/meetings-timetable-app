@@ -15,7 +15,7 @@ const dateRegex = /^20([2-9][1-9]|[3-9]0)\/(1[0-2]|[1-9])\/([1-9]|[1-2][0-9]|3[0
 
 let branches;
 
-// TODO remove next function when making in production to use the automatically generated branches
+// TODO remove next function in production to use the automatically generated branches
 const temporaryBranches = async () => {
     // branch to get data locally to be used in development
     const response = await fetch('.//components/pages/meeting-form/temporaryBranches.json')
@@ -54,6 +54,10 @@ const temporaryQuestionsList = [{
     }, {
         isMultiple: 'false',
         questionContent: 'في أي فريق؟',
+    },
+    {
+        isMultiple: 'false',
+        questionContent: 'في أي فريق فرعي؟',
     }
 
 ]
@@ -219,7 +223,6 @@ export const showNextQuestion = (selectedElement) => {
 
             break;
         case 1:
-
             const branchesChoices = branches.map(branch => {
                 return {
                     id: branch.branchCode,
@@ -232,8 +235,7 @@ export const showNextQuestion = (selectedElement) => {
             })
             break;
         case 2:
-            0
-            const id = selectedElement.id + '-team'
+            const teamQuestionId = selectedElement.id + '-teams'
             const branchTeamsChoices = branches.filter(branch => branch.branchCode === selectedElement.id).map(branch => {
                 const branchTeams = branch.teams
                 return branchTeams.map(branchTeam => {
@@ -248,10 +250,41 @@ export const showNextQuestion = (selectedElement) => {
             })[0]
             console.log(branchTeamsChoices);
             nextQuestionHTML = QuestionComponent.renderSelect({
-                id,
+                id: teamQuestionId,
                 choices: branchTeamsChoices,
                 ...temporaryQuestionsList[nextQuestionIndex],
             })
+            break;
+        case 3:
+            const previousChoiceId = selectedElement.parentElement.id.split('-').pop.join('')
+            const selectedTeamId = selectedElement.id
+            const subTeamQuestionId = `${previousChoiceCode}-${selectedTeamId}-subTeams`
+            console.log(selectedElement.parentElement.id);
+            console.log(subTeamQuestionId);
+
+            const teamObject = branches.find(branch => branch.branchCode === branchCode).teams.find(team => teamCode === team.teamCode)
+            const subTeamsArrayOfObject = teamObject.subTeam
+
+            if (subTeamsArrayOfObject) {
+                const teamSubTeamsChoices = subTeamsArrayOfObject.map(subTeamObject => {
+                    console.log(subTeamObject);
+                    return {
+                        id: subTeamObject.teamCode,
+                        content: subTeamObject.teamName
+                    }
+
+                })
+
+                console.log(teamSubTeamsChoices);
+                nextQuestionHTML = QuestionComponent.renderSelect({
+                    id: subTeamQuestionId,
+                    choices: teamSubTeamsChoices,
+                    ...temporaryQuestionsList[nextQuestionIndex],
+                })
+            } else {
+                nextQuestionIndex += 1
+            }
+
             break;
         default:
             console.log('entered default');
@@ -270,21 +303,21 @@ export const showNextQuestion = (selectedElement) => {
 }
 
 export const initializeForm = async () => {
-    // TODO remove next line
+    // TODO remove next variable in production to use the automatically generated branches
     branches = await temporaryBranches();
     if (!branches) {
         console.log('getting branches');
         branches = await getTeams()
-        showNextQuestion()
         // TODO remove showNextQuestion and uncomment updateQuestionsList()
+        showNextQuestion()
         // updateQuestionsList()
     } else {
         console.log('branches is cached');
         const isFormExist = setInterval(() => {
             console.log('in interval');
             if (document.querySelector('#meeting-form-component .col ol')) {
-                showNextQuestion()
                 // TODO remove showNextQuestion and uncomment updateQuestionsList()
+                showNextQuestion()
                 // updateQuestionsList()
                 clearInterval(isFormExist)
             }

@@ -9,27 +9,74 @@
         "teams": [{
                 "teamCode": "ta3alom",
                 "teamName": "إيفنت التعلّم",
-                "subteam": {
-                    "teamCode": "tawasol",
-                    "teamName": "التواصل",
-                    "subteam": {
-                        "teamCode": "mo7tawa",
-                        "teamName": "المحتوى",
-                        "subteam": null,
-                        "members": [
-                            "Mahmoud Samy"
-                        ]
-                    },
+                "subTeam": [{
+                    "teamCode": "hr",
+                    "teamName": "فريق الموارد البشرية",
+                    "subTeam": null,
                     "members": [
                         "Mahmoud Samy"
                     ]
-                },
+                }, {
+                    "teamCode": "pr",
+                    "teamName": "فريق العلاقات العامة",
+                    "subTeam": null,
+                    "members": [
+                        "Mahmoud Samy"
+                    ]
+                }, {
+                    "teamCode": "fr",
+                    "teamName": "فريق الموارد المالية",
+                    "subTeam": null,
+                    "members": [
+                        "Mahmoud Samy"
+                    ]
+                }, {
+                    "teamCode": "tawasol",
+                    "teamName": "فريق التواصل",
+                    "subTeam": null,
+                    "members": [
+                        "Mahmoud Samy"
+                    ]
+                }, {
+                    "teamCode": "damg",
+                    "teamName": "فريق الدمج",
+                    "subTeam": null,
+                    "members": [
+                        "Mahmoud Samy"
+                    ]
+                }, {
+                    "teamCode": "media",
+                    "teamName": "فريق الميديا",
+                    "subTeam": [{
+                        "teamCode": "design",
+                        "teamName": "فريق الديزاين",
+                        "subTeam": null,
+                        "members": [
+                            "Mahmoud Samy"
+                        ]
+                    }, {
+                        "teamCode": "videos",
+                        "teamName": "فريق الفيديوهات",
+                        "subTeam": null,
+                        "members": [
+                            "Mahmoud Samy"
+                        ]
+                    }, {
+                        "teamCode": "social",
+                        "teamName": "فريق السوشيال",
+                        "subTeam": null,
+                        "members": [
+                            "Mahmoud Samy"
+                        ]
+                    }],
+                    "members": null
+                }],
                 "members": null
             },
             {
-                "teamCode": "pr",
-                "teamName": "لجنة العلاقات العامة",
-                "subteam": null,
+                "teamCode": "oc",
+                "teamName": "اللجنة التنظيمية",
+                "subTeam": null,
                 "members": [
                     "Mahmoud Samy"
                 ]
@@ -38,14 +85,36 @@
             {
                 "teamCode": "mobadrat",
                 "teamName": "لجنة المبادرات",
-                "subteam": {
-                    "teamCode": "tawasol",
-                    "teamName": "التواصل",
-                    "subteam": null
-                },
+                "subTeam": [{
+                    "teamCode": "eqraaTakon",
+                    "teamName": "مبادرة اقرأ تكن",
+                    "subTeam": null,
+                    "members": [
+                        "Mahmoud Samy"
+                    ]
+                }],
+                "members": null
+            },
+            {
+                "teamCode": "rd",
+                "teamName": "لجنة البحث و التطور",
+                "subTeam": null,
                 "members": [
                     "Mahmoud Samy"
                 ]
+            },
+            {
+                "teamCode": "media",
+                "teamName": "لجنة الميديا",
+                "subTeam": [{
+                    "teamCode": "podcast",
+                    "teamName": "فريق البودكاست",
+                    "subTeam": null,
+                    "members": [
+                        "Mahmoud Samy"
+                    ]
+                }],
+                "members": null
             }
         ]
     },
@@ -59,35 +128,211 @@
         "teams": [{
             "teamCode": "pr",
             "teamName": "لجنة العلاقات العامة",
-            "subteam": null,
+            "subTeam": null,
             "members": [
                 "Mahmoud Samy"
             ]
         }, {
             "teamCode": "activity",
             "teamName": "لجنة الأكتيفتي",
-            "subteam": null,
+            "subTeam": null,
             "members": [
                 "Mahmoud Samy"
             ]
         }, {
             "teamCode": "media",
             "teamName": "لجنة الميديا",
-            "subteam": null,
+            "subTeam": null,
             "members": [
                 "Mahmoud Samy"
             ]
         }, {
             "teamCode": "fr",
             "teamName": "لجنة الموارد المالية",
-            "subteam": null,
+            "subTeam": null,
             "members": [
                 "Mahmoud Samy"
             ]
         }, {
             "teamCode": "hr",
             "teamName": "لجنة الموارد البشرية",
-            "subteam": null,
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }]
+    },
+    "handasaId": {
+        "creatorId": "e324511434rer",
+        "creatorName": "Mahmoud Ibn Samy",
+        "creatorEmail": "kazakaza@gmail.com",
+        "creationTime": 1610902493,
+        "branchCode": "handasa",
+        "branchName": "هندسة",
+        "teams": [{
+            "teamCode": "pr",
+            "teamName": "لجنة العلاقات العامة",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "activity",
+            "teamName": "لجنة الأكتيفتي",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "media",
+            "teamName": "لجنة الميديا",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "fr",
+            "teamName": "لجنة الموارد المالية",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "hr",
+            "teamName": "لجنة الموارد البشرية",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }]
+    },
+    "tebbId": {
+        "creatorId": "e324511434rer",
+        "creatorName": "Mahmoud Ibn Samy",
+        "creatorEmail": "kazakaza@gmail.com",
+        "creationTime": 1610902493,
+        "branchCode": "tebb",
+        "branchName": "طب",
+        "teams": [{
+            "teamCode": "pr",
+            "teamName": "لجنة العلاقات العامة",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "activity",
+            "teamName": "لجنة الأكتيفتي",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "media",
+            "teamName": "لجنة الميديا",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "fr",
+            "teamName": "لجنة الموارد المالية",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "hr",
+            "teamName": "لجنة الموارد البشرية",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }]
+    },
+    "asnanId": {
+        "creatorId": "e324511434rer",
+        "creatorName": "Mahmoud Ibn Samy",
+        "creatorEmail": "kazakaza@gmail.com",
+        "creationTime": 1610902493,
+        "branchCode": "asnan",
+        "branchName": "أسنان",
+        "teams": [{
+            "teamCode": "pr",
+            "teamName": "لجنة العلاقات العامة",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "activity",
+            "teamName": "لجنة الأكتيفتي",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "media",
+            "teamName": "لجنة الميديا",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "fr",
+            "teamName": "لجنة الموارد المالية",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "hr",
+            "teamName": "لجنة الموارد البشرية",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }]
+    },
+    "tegaraId": {
+        "creatorId": "e324511434rer",
+        "creatorName": "Mahmoud Ibn Samy",
+        "creatorEmail": "kazakaza@gmail.com",
+        "creationTime": 1610902493,
+        "branchCode": "tegara",
+        "branchName": "تجارة",
+        "teams": [{
+            "teamCode": "pr",
+            "teamName": "لجنة العلاقات العامة",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "activity",
+            "teamName": "لجنة الأكتيفتي",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "media",
+            "teamName": "لجنة الميديا",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "fr",
+            "teamName": "لجنة الموارد المالية",
+            "subTeam": null,
+            "members": [
+                "Mahmoud Samy"
+            ]
+        }, {
+            "teamCode": "hr",
+            "teamName": "لجنة الموارد البشرية",
+            "subTeam": null,
             "members": [
                 "Mahmoud Samy"
             ]
