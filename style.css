@@ -148,14 +148,17 @@ nav {
 
 .btn span,
 .btn span i {
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
 }
 
 .btn,
 .btn span,
 .btn span i {
     line-height: 50%;
-    padding-bottom: 0;
+    /* padding-bottom: 0; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 767px) {
