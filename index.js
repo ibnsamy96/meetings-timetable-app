@@ -72,7 +72,7 @@ const autoSignIn = async () => {
 
     console.log('function loaded');
     firebase.auth().onAuthStateChanged((user) => {
-
+        // console.log();
         if (user) {
             console.log('wow');
             // User is signed in, see docs for a list of available properties

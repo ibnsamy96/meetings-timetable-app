@@ -6,6 +6,7 @@ import {
     QuestionComponent
 } from "../../shared/question.component.js";
 
+
 let questions;
 
 const timeRegex = /^(2[0-3]|[0-1][0-9]):[0-5][0-9]$/
@@ -13,6 +14,22 @@ const timeRegex = /^(2[0-3]|[0-1][0-9]):[0-5][0-9]$/
 const dateRegex = /^20([2-9][1-9]|[3-9]0)\/(1[0-2]|[1-9])\/([1-9]|[1-2][0-9]|3[01])$/
 
 let branches;
+
+// TODO remove next function when making in production to use the automatically generated branches
+const temporaryBranches = async () => {
+    // branch to get data locally to be used in development
+    const response = await fetch('.//components/pages/meeting-form/temporaryBranches.json')
+    const teams = await response.json()
+    const branchesIds = Object.keys(teams) // ids of all teams
+    const teamsData = branchesIds.map(branchId => {
+        // returned value -> {team1Id,team1Value}
+        return {
+            branchId,
+            ...teams[branchId]
+        }
+    })
+    return teamsData // teamData -> [{team1Id,team1Value},{team2Id,team2Value} ...]
+};
 
 let questionsList;
 // TODO remove next variable if not user
@@ -253,6 +270,8 @@ export const showNextQuestion = (selectedElement) => {
 }
 
 export const initializeForm = async () => {
+    // TODO remove next line
+    branches = await temporaryBranches();
     if (!branches) {
         console.log('getting branches');
         branches = await getTeams()

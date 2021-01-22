@@ -102,9 +102,9 @@ export const getTeams = async () => {
 	// database has branches not teams
 	const loginEndpointUrl = databaseApi + endPoints.teams
 	const userToken = restoreUserToken()
-	const teams = await getData(loginEndpointUrl, userToken) // {team1Id:{team1Value},team2Id:{teamValue} ...}
-	const branchesIds = Object.keys(teams) // ids of all teams
-	const teamsData = branchesIds.map(branchId => {
+	const teamsJson = await getData(loginEndpointUrl, userToken) // {team1Id:{team1Value},team2Id:{teamValue} ...}
+	const teamsJsonIds = Object.keys(teamsJson) // ids of all teams
+	const teamsData = teamsJsonIds.map(branchId => {
 		// returned value -> {team1Id,team1Value}
 		return {
 			branchId,
