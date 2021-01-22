@@ -146,10 +146,16 @@ nav {
     /* color: var(--black); */
 }
 
+.btn span,
+.btn span i {
+    margin-bottom: 0;
+}
+
 .btn,
 .btn span,
 .btn span i {
-    line-height: 50%
+    line-height: 50%;
+    padding-bottom: 0;
 }
 
 @media (max-width: 767px) {
