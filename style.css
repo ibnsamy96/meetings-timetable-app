@@ -149,7 +149,7 @@ nav {
 .btn,
 .btn span,
 .btn span i {
-    /* line-height: 50% */
+    line-height: 50%
 }
 
 @media (max-width: 767px) {
