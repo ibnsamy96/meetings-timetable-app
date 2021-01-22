@@ -154,7 +154,7 @@ nav {
 .btn,
 .btn span,
 .btn span i {
-    line-height: 50%;
+    /* line-height: 50%; */
     /* padding-bottom: 0; */
     display: flex;
     justify-content: center;
