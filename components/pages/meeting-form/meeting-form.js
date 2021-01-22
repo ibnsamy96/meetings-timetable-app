@@ -254,6 +254,11 @@ export const showNextQuestion = (selectedElement) => {
 
             })[0]
             console.log(branchTeamsChoices);
+            const generalBranchMeetingObject = {
+                id: 'general',
+                content: selectedElement.id === 'gam3a' ? 'اجتماع عام للجامعة' : 'اجتماع عام ل' + selectedElement.innerText
+            }
+            branchTeamsChoices.push(generalBranchMeetingObject)
             nextQuestionHTML = QuestionComponent.renderSelect({
                 id: teamQuestionId,
                 choices: branchTeamsChoices,
@@ -289,6 +294,11 @@ export const showNextQuestion = (selectedElement) => {
                 })
 
                 console.log(teamSubTeamsChoices);
+                const generalTeamMeetingObject = {
+                    id: 'general',
+                    content: selectedElement.innerText.slice(0, 2) === 'ال' ? "اجتماع عام ل" + selectedElement.innerText.slice(2) : "اجتماع عام ل" + selectedElement.innerText
+                }
+                teamSubTeamsChoices.push(generalTeamMeetingObject)
                 nextQuestionHTML = QuestionComponent.renderSelect({
                     id: subTeamQuestionId,
                     choices: teamSubTeamsChoices,

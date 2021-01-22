@@ -142,7 +142,28 @@
         }, {
             "teamCode": "media",
             "teamName": "لجنة الميديا",
-            "subTeam": null,
+            "subTeam": [{
+                "teamCode": "design",
+                "teamName": "فريق الديزاين",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }, {
+                "teamCode": "videos",
+                "teamName": "فريق الفيديوهات",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }, {
+                "teamCode": "social",
+                "teamName": "فريق السوشيال",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }],
             "members": [
                 "Mahmoud Samy"
             ]
@@ -186,7 +207,28 @@
         }, {
             "teamCode": "media",
             "teamName": "لجنة الميديا",
-            "subTeam": null,
+            "subTeam": [{
+                "teamCode": "design",
+                "teamName": "فريق الديزاين",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }, {
+                "teamCode": "videos",
+                "teamName": "فريق الفيديوهات",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }, {
+                "teamCode": "social",
+                "teamName": "فريق السوشيال",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }],
             "members": [
                 "Mahmoud Samy"
             ]
@@ -230,7 +272,28 @@
         }, {
             "teamCode": "media",
             "teamName": "لجنة الميديا",
-            "subTeam": null,
+            "subTeam": [{
+                "teamCode": "design",
+                "teamName": "فريق الديزاين",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }, {
+                "teamCode": "videos",
+                "teamName": "فريق الفيديوهات",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }, {
+                "teamCode": "social",
+                "teamName": "فريق السوشيال",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }],
             "members": [
                 "Mahmoud Samy"
             ]
@@ -274,7 +337,28 @@
         }, {
             "teamCode": "media",
             "teamName": "لجنة الميديا",
-            "subTeam": null,
+            "subTeam": [{
+                "teamCode": "design",
+                "teamName": "فريق الديزاين",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }, {
+                "teamCode": "videos",
+                "teamName": "فريق الفيديوهات",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }, {
+                "teamCode": "social",
+                "teamName": "فريق السوشيال",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }],
             "members": [
                 "Mahmoud Samy"
             ]
@@ -318,7 +402,28 @@
         }, {
             "teamCode": "media",
             "teamName": "لجنة الميديا",
-            "subTeam": null,
+            "subTeam": [{
+                "teamCode": "design",
+                "teamName": "فريق الديزاين",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }, {
+                "teamCode": "videos",
+                "teamName": "فريق الفيديوهات",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }, {
+                "teamCode": "social",
+                "teamName": "فريق السوشيال",
+                "subTeam": null,
+                "members": [
+                    "Mahmoud Samy"
+                ]
+            }],
             "members": [
                 "Mahmoud Samy"
             ]
