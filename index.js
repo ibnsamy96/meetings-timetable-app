@@ -36,12 +36,12 @@ let isMeetingFormDisabled = false
 
 
 const mainRouter = async (pageName) => {
-    const x = await getPageComponentCode(pageName)
+    const pageComponent = await getPageComponentCode(pageName)
     //function to replace main element with the right pageComponent
-    document.querySelector('main').innerHTML = x
-    if (pageName === 'login') {
-        calculateMainHeight()
-    }
+    document.querySelector('main').innerHTML = pageComponent
+    // if (pageName === 'login') {
+    calculateMainHeight()
+
 }
 
 function calculateMainHeight() {
@@ -54,7 +54,10 @@ function calculateMainHeight() {
     if (loginSection) {
         document.querySelector('#login-component').style.height = `${mainHeight}px`
     }
-
+    const fbSignOutBtn = document.querySelector('#fbSignOutBtn')
+    if (fbSignOutBtn) {
+        fbSignOutBtn.style.height = getComputedStyle(fbSignOutBtn.parentElement.parentElement).getPropertyValue('height')
+    }
 }
 
 window.addEventListener('resize', calculateMainHeight)

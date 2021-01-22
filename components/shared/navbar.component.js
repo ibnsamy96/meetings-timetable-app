@@ -26,11 +26,11 @@ export const NavbarComponent = {
                 ${getSharedComponentCode('button',{btnData:{
                     id: 'fbSignOutBtn',
                     activationMethod: 'signOut()',
-                    content: '<i class="fas fa-walking"></i>',
+                    content: '<div><i class="fas fa-walking"></i></div>',
                     buttonColorClass: 'btn-outline-info',
                     buttonClasses: 'ms-2',
                     spanClasses: 'p',
-                    buttonStyle: 'padding: .3rem .65rem;',
+                    buttonStyle: '',
                     spanStyle: ''
                 }})}
                 

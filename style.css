@@ -146,12 +146,9 @@ nav {
     /* color: var(--black); */
 }
 
-.btn span,
-.btn span i {
-    /* margin-bottom: 0; */
-}
 
-span {
+.btn span div {
+    /* solving BTNs element center in mobiles */
     /* line-height: 50%; */
     /* padding-bottom: 0; */
     display: flex;
