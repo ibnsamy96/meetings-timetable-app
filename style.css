@@ -151,9 +151,7 @@ nav {
     /* margin-bottom: 0; */
 }
 
-.btn,
-.btn span,
-.btn span i {
+span {
     /* line-height: 50%; */
     /* padding-bottom: 0; */
     display: flex;
