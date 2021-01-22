@@ -182,6 +182,10 @@ const appendQuestion = (nextQuestionHTML) => {
 }
 
 export const showNextQuestion = (selectedElement) => {
+
+
+    //  TODO: in json file, just make it teams and subTeams, remove branch level
+
     if (selectedElement) {
 
         // console.log(selectedElement.parentElement.querySelectorAll('.btn-success').length);
