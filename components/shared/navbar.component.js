@@ -7,22 +7,22 @@ export const NavbarComponent = {
         return `
         <nav class="navbar navbar-light bg-light navBoxShadow py-0" dir='ltr'>
         <div class="container-fluid px-0 ">
-            <span class="navbar-brand m-0 mx-auto my-1"><b>Ma3an</b> Meetings Timetable</span>
+            <span class="navbar-brand  my-1"><b>Ma3an</b> Meetings Timetable</span>
             <div id='controlBtns' class="d-flex d-none">
             
-                <div id='sidebar'>
-
-                ${getSharedComponentCode('button', {btnData: {
-                    id: 'newMeetingBtn',
-                    activationMethod: 'routeToNewMeeting(this)',
-                    content: 'أضف اجتماع',
-                    buttonColorClass: 'btn-primary',
-                    buttonClasses:'ms-0',
-                    spanClasses:'p',
-                    buttonStyle: '',
-                    spanStyle: ''
-                }})}
-                
+                <div id='sidebar' class = 'row mx-0'>
+                    <div class = 'col px-0'>
+                        ${getSharedComponentCode('button', {btnData: {
+                            id: 'newMeetingBtn',
+                            activationMethod: 'routeToNewMeeting(this)',
+                            content: 'أضف اجتماع',
+                            buttonColorClass: 'btn-primary',
+                            buttonClasses:'mx-0 w-100',
+                            spanClasses:'p',
+                            buttonStyle: '',
+                            spanStyle: ''
+                        }})}
+                    </div>
                 </div>
      
                 ${getSharedComponentCode('button',{btnData:{
