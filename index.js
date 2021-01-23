@@ -58,6 +58,10 @@ function calculateMainHeight() {
     if (fbSignOutBtn) {
         fbSignOutBtn.style.height = getComputedStyle(fbSignOutBtn.parentElement.parentElement.parentElement.parentElement).getPropertyValue('height')
     }
+    const newMeetingBtn = document.querySelector('#newMeetingBtn')
+    if (newMeetingBtn) {
+        newMeetingBtn.style.height = getComputedStyle(newMeetingBtn.parentElement.parentElement.parentElement.parentElement).getPropertyValue('height')
+    }
 }
 
 window.addEventListener('resize', calculateMainHeight)

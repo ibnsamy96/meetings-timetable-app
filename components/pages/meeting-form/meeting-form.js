@@ -435,5 +435,5 @@ export const submitMeetingForm = () => {
     document.querySelector('#newMeetingBtn').classList.remove('active')
     document.querySelector('#newMeetingBtn').style.cursor = 'pointer'
     document.querySelector('#newMeetingBtn').style.opacity = '1'
-    console.log(questions);
+    console.table(questions);
 }

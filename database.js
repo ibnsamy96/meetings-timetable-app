@@ -108,7 +108,7 @@ export const getTeams = async () => {
 		// returned value -> {team1Id,team1Value}
 		return {
 			branchId,
-			...teams[branchId]
+			...teamsJson[branchId]
 		}
 	})
 	return teamsData // teamData -> [{team1Id,team1Value},{team2Id,team2Value} ...]

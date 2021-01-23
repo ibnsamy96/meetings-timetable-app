@@ -9,7 +9,8 @@ export const NavbarComponent = {
         <div class="container-fluid px-0 ">
             <span class="navbar-brand m-0 mx-auto my-1"><b>Ma3an</b> Meetings Timetable</span>
             <div id='controlBtns' class="d-flex d-none">
-                
+            
+                <div id='sidebar'>
 
                 ${getSharedComponentCode('button', {btnData: {
                     id: 'newMeetingBtn',
@@ -22,6 +23,7 @@ export const NavbarComponent = {
                     spanStyle: ''
                 }})}
                 
+                </div>
      
                 ${getSharedComponentCode('button',{btnData:{
                     id: 'fbSignOutBtn',
