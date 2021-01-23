@@ -120,6 +120,12 @@ nav {
     border: none !important;
 }
 
+.active:active,
+.active:hover,
+.active:focus {
+    box-shadow: none !important;
+}
+
 .btn-dark:active,
 .btn-dark:hover,
 .btn-dark:focus {
@@ -156,6 +162,14 @@ nav {
     align-items: center;
 }
 
+#newMeetingBtn {
+    border-radius: 0 !important;
+}
+
+#fbSignOutBtn {
+    border-radius: 0 !important;
+}
+
 @media (max-width: 767px) {
     #newMeetingBtn {
         position: fixed;
@@ -166,5 +180,8 @@ nav {
         z-index: 20;
     }
 
+    #newMeetingBtn {
+        /* border-radius: 0.25rem !important; */
+    }
 
 }

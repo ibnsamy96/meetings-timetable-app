@@ -56,7 +56,7 @@ function calculateMainHeight() {
     }
     const fbSignOutBtn = document.querySelector('#fbSignOutBtn')
     if (fbSignOutBtn) {
-        fbSignOutBtn.style.height = getComputedStyle(fbSignOutBtn.parentElement.parentElement).getPropertyValue('height')
+        fbSignOutBtn.style.height = getComputedStyle(fbSignOutBtn.parentElement.parentElement.parentElement.parentElement).getPropertyValue('height')
     }
 }
 
@@ -175,9 +175,13 @@ function updateLoggingUI(errorMessage = undefined) {
 
 
 window.routeToNewMeeting = async (pageBtn) => {
+    if (!pageBtn.classList.contains('active')) {
+        pageBtn.classList.add('active')
+        pageBtn.style.cursor = 'default'
+        pageBtn.style.opacity = '0.5'
+        await mainRouter('meeting-form')
+    }
     // console.log(selectedElement);
-    pageBtn.classList.add('d-none')
-    await mainRouter('meeting-form')
 }
 
 window.fireChooseThisChoice = (selectedElement) => {

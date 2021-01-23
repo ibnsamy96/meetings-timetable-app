@@ -432,6 +432,8 @@ export const checkMeetingForm = () => {
 
 export const submitMeetingForm = () => {
     nextQuestionIndex = 0
-    document.querySelector('#newMeetingBtn').classList.remove('d-none')
+    document.querySelector('#newMeetingBtn').classList.remove('active')
+    document.querySelector('#newMeetingBtn').style.cursor = 'pointer'
+    document.querySelector('#newMeetingBtn').style.opacity = '1'
     console.log(questions);
 }
