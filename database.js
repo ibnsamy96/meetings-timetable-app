@@ -144,8 +144,16 @@ meetings - methods: get & post - pages: post@new_meeting_page & get@meetings_hom
 export const getMeetings = async () => {
 	const MeetingsEndpointUrl = databaseApi + endPoints.meetings
 	const userToken = restoreUserToken()
-	const meetings = await getData(MeetingsEndpointUrl, userToken)
-	console.log(meetings);
+	const meetingsJson = await getData(MeetingsEndpointUrl, userToken) // {meeting1Id:{meeting1Value},meeting2Id:{meeting2Value} ...}
+	const meetingsJsonIds = Object.keys(meetingsJson) // ids of all meetings
+	const meetingsArrayOfObjects = meetingsJsonIds.map(meetingId => {
+		// returned value -> {meeting1Id,meeting1Value}
+		return {
+			meetingId,
+			...meetingsJson[meetingId]
+		}
+	})
+	return meetingsArrayOfObjects // meetingData -> [{meeting1Id,meeting1Value},{meeting2Id,meeting2Value} ...]
 
 }
 
