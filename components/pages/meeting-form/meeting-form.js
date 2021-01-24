@@ -453,7 +453,7 @@ export const submitMeetingForm = async () => {
     document.querySelector('#newMeetingBtn').classList.remove('active')
     document.querySelector('#newMeetingBtn').style.cursor = 'pointer'
     document.querySelector('#newMeetingBtn').style.opacity = '1'
-    console.table(questions);
+    // console.table(questions);
     console.log(questions);
     const userInfo = restoreUserInfo()
     const meetingDateQuestionAnswers = questions.find(question => question.id === 'meetingDate').answers.map(answer => answer.content)

@@ -40,7 +40,7 @@ export const initializeDashboard = async () => {
 
     let meetingsArrayOfObjects = await getMeetings()
 
-    console.table(meetingsArrayOfObjects);
+    // console.table(meetingsArrayOfObjects);
 
     let meetingsHTML = '';
 
@@ -50,4 +50,8 @@ export const initializeDashboard = async () => {
 
     meetingsDashboardRow.innerHTML = meetingsHTML
 
+}
+
+export const getTeamMembers = (chosenMeeting) => {
+    // method to get team members and return them as an array of names
 }

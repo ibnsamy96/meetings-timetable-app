@@ -25,8 +25,8 @@ import {
     chooseThisChoice
 } from "./components/shared/choice.js";
 import {
-    LoginComponent
-} from "./components/pages/login/login.component.js";
+    getTeamMembers
+} from "./components/pages/meetings/meetings-dashboard.js";
 
 // next boolean indicates if user signed in -> will be true at sign in manually or automatically and will be false at sign out
 let isSignedIn
@@ -259,25 +259,29 @@ window.fireSubmitMeetingForm = async () => {
 // next method to toggle team data section
 const mainLeftMargin = parseFloat(getComputedStyle(document.querySelector('main')).marginLeft)
 document.querySelector('#root').style.marginLeft = mainLeftMargin.toString() + 'px';
-window.openTeamData = (doOpen) => {
-    if (doOpen) {
+window.toggleTeamData = ({
+    chosenMeeting,
+    openIt
+}) => {
+    if (openIt) {
+        getTeamMembers(chosenMeeting)
         document.querySelector('#hideContent').classList.remove('d-none')
         setTimeout(() => {
-            document.querySelector('#hideContent').style.opacity = doOpen ? 1 : 0;
+            document.querySelector('#hideContent').style.opacity = openIt ? 1 : 0;
         }, 1)
     } else {
-        document.querySelector('#hideContent').style.opacity = doOpen ? 1 : 0;
+        document.querySelector('#hideContent').style.opacity = openIt ? 1 : 0;
         setTimeout(() => {
             document.querySelector('#hideContent').classList.add('d-none')
         }, 501)
     }
 
-    const mainNewLeftMargin = doOpen ? mainLeftMargin * 0.8 : mainLeftMargin
-    const teamDataNewRight = doOpen ? 0 : -400
+    const mainNewLeftMargin = openIt ? mainLeftMargin * 0.8 : mainLeftMargin
+    const teamDataNewRight = openIt ? 0 : -25
     console.log(mainNewLeftMargin);
     console.log(mainNewLeftMargin.toString() + 'px');
     document.querySelector('#root').style.marginLeft = mainNewLeftMargin.toString() + 'px';
-    document.querySelector('#closeTeamData').style.right = teamDataNewRight.toString() + 'px';
+    document.querySelector('#closeTeamData').style.right = teamDataNewRight.toString() + 'vw';
     console.log(document.querySelector('#root'));
     console.log(document.querySelector('#closeTeamData').style.right);
 }

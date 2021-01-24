@@ -2,6 +2,10 @@ import {
   initializeDashboard
 } from "./meetings-dashboard.js";
 
+import {
+  MembersAreaComponent
+} from "./members-area.component.js";
+
 
 export const MeetingsDashboardComponent = {
   render: () => {
@@ -18,6 +22,8 @@ export const MeetingsDashboardComponent = {
       </div>
 
     </div>
+
+    ${MembersAreaComponent.render()}
         `
   }
 }
