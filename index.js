@@ -45,6 +45,25 @@ const mainRouter = async (pageName) => {
 
 }
 
+const playNavbarBrand = () => {
+    let playingSeparatorCounter = 0
+    const playingSeparator = setInterval(() => {
+        document.querySelector('#navbarBrandSeparator').classList.toggle('d-none')
+        playingSeparatorCounter += 1
+        if (playingSeparatorCounter === 6) {
+            document.querySelector('#navbarBrandSeparator').classList.remove('d-none')
+            clearInterval(playingSeparator)
+        }
+    }, 500)
+
+    setTimeout(() => {
+        document.querySelector('#projectName').style.opacity = 1
+        document.querySelector('#projectName').style.left = 0
+    }, 6 * 500);
+
+
+}
+
 function calculateMainHeight() {
     const navbarHeightPlusPadding = 40 + 16
     const mainElementTopMargin = 24
@@ -57,11 +76,11 @@ function calculateMainHeight() {
     }
     const fbSignOutBtn = document.querySelector('#fbSignOutBtn')
     if (fbSignOutBtn) {
-        fbSignOutBtn.style.height = getComputedStyle(fbSignOutBtn.parentElement.parentElement.parentElement.parentElement).getPropertyValue('height')
+        fbSignOutBtn.style.height = getComputedStyle(document.getElementsByTagName('nav')[0]).getPropertyValue('height')
     }
     const newMeetingBtn = document.querySelector('#newMeetingBtn')
     if (newMeetingBtn) {
-        newMeetingBtn.style.height = getComputedStyle(newMeetingBtn.parentElement.parentElement.parentElement.parentElement).getPropertyValue('height')
+        newMeetingBtn.style.height = getComputedStyle(document.getElementsByTagName('nav')[0]).getPropertyValue('height')
     }
 }
 
@@ -77,6 +96,8 @@ const autoSignIn = async () => {
 
     fbLoginSpinner.classList.remove('d-none')
     fbSignInBtn.classList.add('d-none')
+
+    playNavbarBrand()
 
     console.log('function loaded');
     firebase.auth().onAuthStateChanged((user) => {

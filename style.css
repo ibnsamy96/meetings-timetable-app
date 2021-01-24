@@ -153,7 +153,8 @@ nav {
 }
 
 
-.btn span div {
+.btn span div,
+.navbar-brand {
     /* solving BTNs element center in mobiles */
     /* line-height: 50%; */
     /* padding-bottom: 0; */

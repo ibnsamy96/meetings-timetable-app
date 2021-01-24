@@ -7,7 +7,11 @@ export const NavbarComponent = {
         return `
         <nav class="navbar navbar-light bg-light navBoxShadow py-0" dir='ltr'>
         <div class="container-fluid px-0 ">
-            <span class="navbar-brand  my-1"><b>Ma3an</b> Meetings Timetable</span>
+            <span class="navbar-brand me-0  my-1">
+                <b style="position:relative;z-index:30;    padding-left: 1rem;" class = "bg-light">Ma3an</b>
+                <span class="px-1 bg-light" style="position:relative;z-index:30" id="navbarBrandSeparator" >|</span>
+                <span id="projectName" style="position:relative;left:-10rem;opacity:0;transition: all 0.5s ease-in-out;">Meetings Timetable</span>
+            </span>
             <div id='controlBtns' class="d-flex d-none">
             
                 <div id='sidebar' class = 'row mx-0'>
