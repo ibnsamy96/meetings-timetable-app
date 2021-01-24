@@ -1,5 +1,6 @@
 import {
-    getTeams
+    getTeams,
+    postMeeting
 } from "../../../database.js";
 
 import {
@@ -455,7 +456,7 @@ export const submitMeetingForm = () => {
     const userInfo = restoreUserInfo()
     const meetingDateQuestionAnswers = questions.find(question => question.id === 'meetingDate').answers.map(answer => answer.content)
     const meetingTimeQuestionAnswers = questions.find(question => question.id === 'meetingTime').answers.map(answer => answer.content)
-    const meetingJson = {
+    const meetingInfoJson = {
         "creatorId": userInfo.userId,
         "creatorName": userInfo.userName,
         "creatorEmail": userInfo.userEmail,
@@ -467,7 +468,6 @@ export const submitMeetingForm = () => {
         "teamCode": questions[4].answers[0].id,
         "subTeam": questions[5] ? questions[3].answers[0].id : null,
         "subSubTeam": questions[6] ? questions[4].answers[0].id : null
-
     }
-    console.log(meetingJson);
+    postMeeting(meetingInfoJson);
 }

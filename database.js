@@ -100,9 +100,9 @@ teams - methods: get - pages: get@new_meeting_page
 
 export const getTeams = async () => {
 	// database has branches not teams
-	const loginEndpointUrl = databaseApi + endPoints.teams
+	const teamsEndpointUrl = databaseApi + endPoints.teams
 	const userToken = restoreUserToken()
-	const teamsJson = await getData(loginEndpointUrl, userToken) // {team1Id:{team1Value},team2Id:{teamValue} ...}
+	const teamsJson = await getData(teamsEndpointUrl, userToken) // {team1Id:{team1Value},team2Id:{teamValue} ...}
 	const teamsJsonIds = Object.keys(teamsJson) // ids of all teams
 	const teamsData = teamsJsonIds.map(branchId => {
 		// returned value -> {team1Id,team1Value}
@@ -142,9 +142,16 @@ meetings - methods: get & post - pages: post@new_meeting_page & get@meetings_hom
 */
 
 export const getMeetings = async () => {
-	const loginEndpointUrl = databaseApi + endPoints.meetings
+	const MeetingsEndpointUrl = databaseApi + endPoints.meetings
 	const userToken = restoreUserToken()
-	const meetings = await getData(loginEndpointUrl, userToken)
+	const meetings = await getData(MeetingsEndpointUrl, userToken)
 	console.log(meetings);
 
+}
+
+export const postMeeting = async (meetingInfoJson) => {
+	const MeetingsEndpointUrl = databaseApi + endPoints.meetings
+	const userToken = restoreUserToken()
+	await postData(MeetingsEndpointUrl, meetingInfoJson, userToken)
+	console.log('Meeting Sent');
 }
