@@ -167,7 +167,7 @@ window.signIn = async () => {
         isSignedIn = state
 
         if (isSignedIn) {
-            await mainRouter('meeting-form')
+            await mainRouter('meetings-dashboard')
         } {
             updateLoggingUI(errorMessage)
         }
@@ -249,7 +249,7 @@ window.fireCheckMeetingForm = () => {
 }
 
 window.fireSubmitMeetingForm = async () => {
-    submitMeetingForm()
+    await submitMeetingForm()
     // TODO route to home component instead of the login component
     await mainRouter('meetings-dashboard')
 }
