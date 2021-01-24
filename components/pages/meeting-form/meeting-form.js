@@ -37,6 +37,14 @@ const temporaryBranches = async () => {
 let questionsList;
 // TODO remove next variable if not user
 const temporaryQuestionsList = [{
+        id: 'meetingDate',
+        questionContent: 'ادخل التاريخ',
+    },
+    {
+        id: 'meetingTime',
+        questionContent: 'ادخل الوقت',
+    },
+    {
         id: 'isFinal',
         isMultiple: 'false',
         questionContent: 'ما نوع المعاد؟',
@@ -227,10 +235,13 @@ export const showNextQuestion = (selectedElement) => {
 
     switch (nextQuestionIndex) {
         case 0:
-            nextQuestionHTML = QuestionComponent.renderSelect(temporaryQuestionsList[nextQuestionIndex])
+            nextQuestionHTML = QuestionComponent.renderDate(temporaryQuestionsList[nextQuestionIndex]) +
+                QuestionComponent.renderTime(temporaryQuestionsList[nextQuestionIndex + 1]) +
+                QuestionComponent.renderSelect(temporaryQuestionsList[nextQuestionIndex + 2]);
+            nextQuestionIndex += 2
 
             break;
-        case 1:
+        case 3:
             const branchesChoices = branches.map(branch => {
                 return {
                     id: branch.branchCode,
@@ -242,7 +253,7 @@ export const showNextQuestion = (selectedElement) => {
                 ...temporaryQuestionsList[nextQuestionIndex],
             })
             break;
-        case 2:
+        case 4:
             const teamQuestionId = selectedElement.id + '-teams'
             const branchTeamsChoices = branches.filter(branch => branch.branchCode === selectedElement.id).map(branch => {
                 const branchTeams = branch.teams
@@ -268,7 +279,7 @@ export const showNextQuestion = (selectedElement) => {
                 ...temporaryQuestionsList[nextQuestionIndex],
             })
             break;
-        case 3:
+        case 5:
             const previousChoiceIdArray = selectedElement.parentElement.id.split('-')
             const branchCode = previousChoiceIdArray[0]
             // const teamCode = previousChoiceIdArray[1]
@@ -402,33 +413,34 @@ export const checkMeetingForm = () => {
     } else {
         //good, all questions have answers
         document.querySelector('#warning-formNotCompleted').classList.add('d-none')
-
-        if (!answersOfTimeQuestions.every(answerDiv => timeRegex.test(answerDiv.innerText))) {
-            // some time elements aren't formatted properly
-            document.querySelector('#warning-timeNotFormattedProperly').classList.remove('d-none')
-
-        } else {
-            //good, all time elements are formatted properly
-            document.querySelector('#warning-timeNotFormattedProperly').classList.add('d-none')
-
-
-            if (!answersOfDateQuestions.every(answerObject => {
-                    const answerDiv = `${answerObject.year.innerText.trim()}/${answerObject.month.innerText.trim()}/${answerObject.day.innerText.trim()}`
-                    console.log(answerDiv);
-                    return dateRegex.test(answerDiv)
-                })) {
-                // some date elements aren't formatted properly
-                document.querySelector('#warning-dateNotFormattedProperly').classList.remove('d-none')
-
-            } else {
-                //good, all date elements are formatted properly
-                document.querySelector('#warning-dateNotFormattedProperly').classList.add('d-none')
-                disableMeetingForm(true)
-
-            }
-
-        }
     }
+
+
+    if (!answersOfTimeQuestions.every(answerDiv => timeRegex.test(answerDiv.innerText))) {
+        // some time elements aren't formatted properly
+        document.querySelector('#warning-timeNotFormattedProperly').classList.remove('d-none')
+    } else {
+        //good, all time elements are formatted properly
+        document.querySelector('#warning-timeNotFormattedProperly').classList.add('d-none')
+    }
+
+
+    if (!answersOfDateQuestions.every(answerObject => {
+            const answerDiv = `${answerObject.year.innerText.trim()}/${answerObject.month.innerText.trim()}/${answerObject.day.innerText.trim()}`
+            console.log(answerDiv);
+            return dateRegex.test(answerDiv)
+        })) {
+        // some date elements aren't formatted properly
+        document.querySelector('#warning-dateNotFormattedProperly').classList.remove('d-none')
+
+    } else {
+        //good, all date elements are formatted properly
+        document.querySelector('#warning-dateNotFormattedProperly').classList.add('d-none')
+        disableMeetingForm(true)
+    }
+
+
+
 }
 
 
@@ -439,20 +451,23 @@ export const submitMeetingForm = () => {
     document.querySelector('#newMeetingBtn').style.cursor = 'pointer'
     document.querySelector('#newMeetingBtn').style.opacity = '1'
     console.table(questions);
-    console.log(questions[0]);
+    console.log(questions[1]);
     const userInfo = restoreUserInfo()
+    const meetingDateQuestionAnswers = questions.find(question => question.id === 'meetingDate').answers.map(answer => answer.content)
+    const meetingTimeQuestionAnswers = questions.find(question => question.id === 'meetingTime').answers.map(answer => answer.content)
     const meetingJson = {
         "creatorId": userInfo.userId,
         "creatorName": userInfo.userName,
         "creatorEmail": userInfo.userEmail,
         "creationTime": new Date(),
-        "isFinal": questions[0].answers[0].id,
-        "branchCode": questions[1].answers[0].id,
-        "teamCode": questions[2].answers[0].id,
-        "subTeam": questions[3] ? questions[3].answers[0].id : null,
-        "subSubTeam": questions[4] ? questions[4].answers[0].id : null,
-        "date": "25-11-2021",
-        "time": "05:00-07:30"
+        "date": meetingDateQuestionAnswers.join('-'),
+        "time": meetingTimeQuestionAnswers.join('-'),
+        "isFinal": questions[2].answers[0].id,
+        "branchCode": questions[3].answers[0].id,
+        "teamCode": questions[4].answers[0].id,
+        "subTeam": questions[5] ? questions[3].answers[0].id : null,
+        "subSubTeam": questions[6] ? questions[4].answers[0].id : null
+
     }
     console.log(meetingJson);
 }
