@@ -1,5 +1,10 @@
 export const MeetingsDashboardComponent = {
-  render: () => {
+  render: (meetingsArrayOfObjects = [{}, {}]) => {
+    return `
+
+        `
+  },
+  renderLoading: () => {
     return `
 
         `

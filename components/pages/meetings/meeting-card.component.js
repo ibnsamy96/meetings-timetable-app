@@ -1,7 +1,12 @@
 export const MeetingCardComponent = {
-    render: () => {
+    render: (meetingInfo = {}) => {
         return `
 
         `
+    },
+    renderLoading: () => {
+        return `
+  
+          `
     }
 }
