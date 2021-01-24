@@ -217,7 +217,7 @@ function updateLoggingUI(errorMessage = undefined) {
 }
 
 
-window.routeToNewMeeting = async (pageBtn) => {
+window.routeToAnotherPage = async (pageBtn) => {
     if (!pageBtn.classList.contains('active')) {
         pageBtn.classList.add('active')
         pageBtn.style.cursor = 'default'

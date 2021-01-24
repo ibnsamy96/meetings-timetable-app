@@ -18,7 +18,7 @@ export const NavbarComponent = {
                     <div class = 'col px-0'>
                         ${getSharedComponentCode('button', {btnData: {
                             id: 'newMeetingBtn',
-                            activationMethod: 'routeToNewMeeting(this)',
+                            activationMethod: 'routeToAnotherPage(this)',
                             content: 'أضف اجتماع',
                             buttonColorClass: 'btn-primary',
                             buttonClasses:'mx-0 w-100',
