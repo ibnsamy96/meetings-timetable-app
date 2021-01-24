@@ -12,13 +12,26 @@ const endPoints = {
 	meetings: "meetings.json"
 }
 
-const getData = async (url = databaseApi, userToken) => {
-	const response = await fetch(`${url}?auth=${userToken}`);
+const getData = async (url = databaseApi, {
+	userToken,
+	cacheStatus
+}) => {
+	const headers = {
+		'pragma': 'no-cache',
+		'cache-control': 'no-cache'
+	}
+	const response = await fetch(`${url}?auth=${userToken}`, {
+		method: 'GET',
+		headers,
+	});
 	const jsonResponse = await response.json();
 	return jsonResponse
 };
 
-const postData = async (url = databaseApi, data = {}, userToken) => {
+const postData = async (url = databaseApi, {
+	data,
+	userToken
+}) => {
 	const response = await fetch(`${url}?auth=${userToken}`, {
 		method: "POST",
 		body: JSON.stringify(data),
@@ -54,7 +67,10 @@ export const postLoginInfo = async (user) => {
 		loginTime
 	}
 	const loginEndpointUrl = databaseApi + endPoints.loginInfo
-	await postData(loginEndpointUrl, userLoginInfo, userToken)
+	await postData(loginEndpointUrl, {
+		data: userLoginInfo,
+		userToken
+	})
 	console.log('Your logging data is saved.');
 }
 
@@ -102,7 +118,10 @@ export const getTeams = async () => {
 	// database has branches not teams
 	const teamsEndpointUrl = databaseApi + endPoints.teams
 	const userToken = restoreUserToken()
-	const teamsJson = await getData(teamsEndpointUrl, userToken) // {team1Id:{team1Value},team2Id:{teamValue} ...}
+	const teamsJson = await getData(teamsEndpointUrl, {
+		userToken,
+		cacheStatus: true
+	}) // {team1Id:{team1Value},team2Id:{teamValue} ...}
 	const teamsJsonIds = Object.keys(teamsJson) // ids of all teams
 	const teamsData = teamsJsonIds.map(branchId => {
 		// returned value -> {team1Id,team1Value}
@@ -142,24 +161,29 @@ meetings - methods: get & post - pages: post@new_meeting_page & get@meetings_hom
 */
 
 export const getMeetings = async () => {
-	const MeetingsEndpointUrl = databaseApi + endPoints.meetings
-	const userToken = restoreUserToken()
-	const meetingsJson = await getData(MeetingsEndpointUrl, userToken) // {meeting1Id:{meeting1Value},meeting2Id:{meeting2Value} ...}
-	const meetingsJsonIds = Object.keys(meetingsJson) // ids of all meetings
-	const meetingsArrayOfObjects = meetingsJsonIds.map(meetingId => {
+	let MeetingsEndpointUrl = databaseApi + endPoints.meetings
+	let userToken = restoreUserToken()
+	let meetingsJson = await getData(MeetingsEndpointUrl, {
+		userToken,
+		cacheStatus: false
+	}) // {meeting1Id:{meeting1Value},meeting2Id:{meeting2Value} ...}
+	let meetingsJsonIds = Object.keys(meetingsJson) // ids of all meetings
+	let meetingsArrayOfObjects = meetingsJsonIds.map(meetingId => {
 		// returned value -> {meeting1Id,meeting1Value}
 		return {
 			meetingId,
 			...meetingsJson[meetingId]
 		}
-	})
-	return meetingsArrayOfObjects // meetingData -> [{meeting1Id,meeting1Value},{meeting2Id,meeting2Value} ...]
+	}).reverse() // we reverse it to get the latest at the first in the dashboard
+	return meetingsArrayOfObjects // meetingData -> [{meeting2Id,meeting2Value}, {meeting1Id,meeting1Value} ...]
 
 }
 
 export const postMeeting = async (meetingInfoJson) => {
 	const MeetingsEndpointUrl = databaseApi + endPoints.meetings
 	const userToken = restoreUserToken()
-	await postData(MeetingsEndpointUrl, meetingInfoJson, userToken)
-	console.log('Meeting Sent');
+	await postData(MeetingsEndpointUrl, {
+		data: meetingInfoJson,
+		userToken
+	})
 }
