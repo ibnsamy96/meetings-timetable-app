@@ -112,6 +112,7 @@ export const getTeams = async () => {
 		}
 	})
 	return teamsData // teamData -> [{team1Id,team1Value},{team2Id,team2Value} ...]
+	// TODO make getting teams saved to local storage at the first time
 }
 
 /*

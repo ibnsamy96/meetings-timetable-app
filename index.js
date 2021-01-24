@@ -2,7 +2,8 @@ import {
     facebookSignInUsingPopup,
     facebookSignInUsingRedirect,
     facebookSignOut,
-    saveUserToken
+    saveUserToken,
+    saveUserInfo
 } from "./auth.js";
 import {
     getMeetings,
@@ -85,9 +86,16 @@ const autoSignIn = async () => {
             // User is signed in, see docs for a list of available properties
             // https://firebase.google.com/docs/reference/js/firebase.User
             const userId = user.uid;
+            const userName = user.displayName;
+            const userEmail = user.email;
             console.log(user);
             userToken = user.ya;
             saveUserToken(userToken)
+            saveUserInfo({
+                userId,
+                userName,
+                userEmail
+            })
             // console.log(uid);
             postLoginInfo(user)
             getTeams()

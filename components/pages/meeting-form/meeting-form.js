@@ -5,6 +5,9 @@ import {
 import {
     QuestionComponent
 } from "../../shared/question.component.js";
+import {
+    restoreUserInfo
+} from "../../../auth.js";
 
 
 let questions;
@@ -436,4 +439,20 @@ export const submitMeetingForm = () => {
     document.querySelector('#newMeetingBtn').style.cursor = 'pointer'
     document.querySelector('#newMeetingBtn').style.opacity = '1'
     console.table(questions);
+    console.log(questions[0]);
+    const userInfo = restoreUserInfo()
+    const meetingJson = {
+        "creatorId": userInfo.userId,
+        "creatorName": userInfo.userName,
+        "creatorEmail": userInfo.userEmail,
+        "creationTime": new Date(),
+        "isFinal": questions[0].answers[0].id,
+        "branchCode": questions[1].answers[0].id,
+        "teamCode": questions[2].answers[0].id,
+        "subTeam": questions[3] ? questions[3].answers[0].id : null,
+        "subSubTeam": questions[4] ? questions[4].answers[0].id : null,
+        "date": "25-11-2021",
+        "time": "05:00-07:30"
+    }
+    console.log(meetingJson);
 }
