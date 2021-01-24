@@ -126,9 +126,9 @@ nav {
     border: none !important;
 }
 
-.active:active,
-.active:hover,
-.active:focus {
+.btn.active:active,
+.btn.active:hover,
+.btn.active:focus {
     box-shadow: none !important;
 }
 
@@ -184,15 +184,26 @@ nav {
     user-select: none;
     cursor: pointer;
     border-radius: .5rem;
+    border: 1px solid;
+}
+
+.meetingCard.active {
+    border-color: #2E237A !important;
 }
 
 .meetingCard.final {
     background-color: #A08FBE;
+    border-color: #A08FBE;
+    color: white;
 }
 
 .meetingCard.notFinal {
     background-color: #C9B3F1;
+    border-color: #C9B3F1;
+
 }
+
+
 
 
 @media (max-width: 767px) {
