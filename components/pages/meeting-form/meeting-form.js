@@ -380,8 +380,10 @@ export const checkMeetingForm = () => {
     questions = [...document.querySelectorAll('li')].map(question => {
         const answerChoices = [...question.children].splice(1)
         const chosenAnswers = answerChoices.filter(choice => {
+
                 const isChoiceSelected = choice.classList.contains('btn-success')
                 return isChoiceSelected
+
             })
             .map(selectedElement => {
                 return {
@@ -452,7 +454,7 @@ export const submitMeetingForm = async () => {
     document.querySelector('#newMeetingBtn').style.cursor = 'pointer'
     document.querySelector('#newMeetingBtn').style.opacity = '1'
     console.table(questions);
-    console.log(questions[1]);
+    console.log(questions);
     const userInfo = restoreUserInfo()
     const meetingDateQuestionAnswers = questions.find(question => question.id === 'meetingDate').answers.map(answer => answer.content)
     const meetingTimeQuestionAnswers = questions.find(question => question.id === 'meetingTime').answers.map(answer => answer.content)
@@ -467,9 +469,11 @@ export const submitMeetingForm = async () => {
         "isFinal": isFinal,
         "branchCode": questions[3].answers[0].id,
         "teamCode": questions[4].answers[0].id,
-        "subTeam": questions[5] ? questions[3].answers[0].id : null,
-        "subSubTeam": questions[6] ? questions[4].answers[0].id : null
+        "subTeam": questions[5] ? questions[5].answers[0].id : null,
+        "subSubTeam": questions[6] ? questions[6].answers[0].id : null
     }
+    console.log(meetingInfoJson);
+
     await postMeeting(meetingInfoJson);
     console.log('Meeting Sent');
 }
