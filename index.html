@@ -39,33 +39,9 @@
 <body>
     <header>
     </header>
-    <button id="openTeamData" onclick="openTeamData(true)">open menu</button>
-    <section id="closeTeamData" class="meetingMembersBoxShadow" style="transition:all ease-in-out 500ms;background-color: aqua;
-        position: absolute;
-        z-index: 200;
-        top: 56px;
-        right: -400px;
-        bottom: 0px;
-        width: 400px !important;">
-        <button id="openTeamData" onclick="openTeamData(false)">close menu</button>
-    </section>
-    <div id='hideContent' onclick=openTeamData(false) class="d-none" style="transition:all ease-in-out 500ms;background-color: aqua;
-    opacity: 0;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.5);
-    z-index: 180;
-    -webkit-backdrop-filter:blur(2px);
-    backdrop-filter: blur(2px);
-    top: 56px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    ">
-    </div>
-    <main id='root' class="container-md mt-4 mb-1" style="transition:all ease-in-out 500ms;">
+    <!-- <button id="openTeamData" onclick="openTeamData(true)">open menu</button> -->
+    <main id='root' class="container-md mt-4 mb-4" style="transition:all ease-in-out 500ms;">
     </main>
-    <!-- <button id='signIn' style="display: inline;" onclick="signIn()">signIn</button>
-    <button id='signOut' style="display: none;" onclick="signOut()">popup</button> -->
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
