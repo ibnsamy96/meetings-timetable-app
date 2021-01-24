@@ -446,7 +446,7 @@ export const checkMeetingForm = () => {
 
 
 
-export const submitMeetingForm = () => {
+export const submitMeetingForm = async () => {
     nextQuestionIndex = 0
     document.querySelector('#newMeetingBtn').classList.remove('active')
     document.querySelector('#newMeetingBtn').style.cursor = 'pointer'
@@ -456,6 +456,7 @@ export const submitMeetingForm = () => {
     const userInfo = restoreUserInfo()
     const meetingDateQuestionAnswers = questions.find(question => question.id === 'meetingDate').answers.map(answer => answer.content)
     const meetingTimeQuestionAnswers = questions.find(question => question.id === 'meetingTime').answers.map(answer => answer.content)
+    const isFinal = questions[2].answers[0].id === 'yes' ? true : false
     const meetingInfoJson = {
         "creatorId": userInfo.userId,
         "creatorName": userInfo.userName,
@@ -463,11 +464,12 @@ export const submitMeetingForm = () => {
         "creationTime": new Date(),
         "date": meetingDateQuestionAnswers.join('-'),
         "time": meetingTimeQuestionAnswers.join('-'),
-        "isFinal": questions[2].answers[0].id,
+        "isFinal": isFinal,
         "branchCode": questions[3].answers[0].id,
         "teamCode": questions[4].answers[0].id,
         "subTeam": questions[5] ? questions[3].answers[0].id : null,
         "subSubTeam": questions[6] ? questions[4].answers[0].id : null
     }
-    postMeeting(meetingInfoJson);
+    await postMeeting(meetingInfoJson);
+    console.log('Meeting Sent');
 }
