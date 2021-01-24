@@ -6,20 +6,21 @@ import {
     MeetingCardComponent
 } from "./meeting-card.component.js";
 
-let meetingsDashboardComponent;
+let meetingsDashboardRow;
 
 
 const showLoadingCards = () => {
 
+    console.log('hi from show');
+
+
     const elementExistenceInterval = setInterval(() => {
-        meetingsDashboardComponent = document.querySelector('#meetings-dashboard')
-        console.log(1);
-        if (meetingsDashboardComponent) {
-
+        meetingsDashboardRow = document.querySelector('#meetingsDashboard .row')
+        if (meetingsDashboardRow) {
+            meetingsDashboardRow.innerHTML = ''
             for (let i = 0; i < 6; i++) {
-
                 const cardComponent = document.createElement('div')
-                meetingsDashboardComponent.appendChild(cardComponent)
+                meetingsDashboardRow.appendChild(cardComponent)
                 cardComponent.outerHTML = MeetingCardComponent.renderLoading()
                 console.log(i);
             }
@@ -32,15 +33,14 @@ const showLoadingCards = () => {
 
 export const initializeDashboard = async () => {
 
+    console.log('hi from init');
+
+
     showLoadingCards()
 
-    const meetingsArrayOfObjects = await getMeetings()
+    let meetingsArrayOfObjects = await getMeetings()
 
-    console.log(await meetingsArrayOfObjects);
-
-    getMeetings().then((data) => {
-        console.log(data);
-    })
+    console.table(meetingsArrayOfObjects);
 
     let meetingsHTML = '';
 
@@ -48,6 +48,6 @@ export const initializeDashboard = async () => {
         meetingsHTML = meetingsHTML + MeetingCardComponent.render(meetingInfo)
     });
 
-    meetingsDashboardComponent.innerHTML = meetingsHTML
+    meetingsDashboardRow.innerHTML = meetingsHTML
 
 }

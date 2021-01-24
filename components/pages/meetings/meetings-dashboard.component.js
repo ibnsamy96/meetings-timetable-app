@@ -5,12 +5,14 @@ import {
 
 export const MeetingsDashboardComponent = {
   render: () => {
+    console.log('hi from comp');
     initializeDashboard()
 
     return `
-    <div class="overflow-hidden">
+    <div id = "meetingsDashboard" class="overflow-hidden pt-4 mt-4 pb-5">
+    <h1 class="h2 mb-5 pageHeadingText">اجتماعات معًا القادمة</h1>
 
-      <div id = "meetings-dashboard" class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gx-4 gy-4">
+      <div id = "" class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gx-2 gy-4 mb-3">
      
       </div>
 
