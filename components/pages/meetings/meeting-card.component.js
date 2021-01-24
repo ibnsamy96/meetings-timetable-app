@@ -3,7 +3,7 @@ export const MeetingCardComponent = {
         console.table(meetingInfo);
         return `
         <div class="col">
-            <div class="p-3 meetingCard primaryBoxShadow mx-2 ${meetingInfo.isFinal?'final':'notFinal'}">
+            <div class="p-3 meetingCard primaryBoxShadow mx-3 ${meetingInfo.isFinal?'final':'notFinal'}">
             
             <p class = "h4 fw-normal m-0 p-0 text-center">${meetingInfo.teamCode}</p>
             
