@@ -14,6 +14,9 @@ import {
 import {
     ButtonComponent
 } from "./components/shared/button.component.js";
+import {
+    LoadingComponent
+} from "./components/shared/loading.component.js";
 
 const pagesRouter = [{
         key: 'login',
@@ -36,6 +39,10 @@ const sharedComponentsRouter = [{
     {
         key: 'button',
         component: ButtonComponent
+    },
+    {
+        key: 'loading',
+        component: LoadingComponent
     }
 ]
 
@@ -60,13 +67,16 @@ export const getSharedComponentCode = (key, componentParameters = {
         spanClasses: '',
         buttonStyle: '',
         spanStyle: ''
-    }
+    },
+    loadingSize: ''
 }) => {
     const [component] = sharedComponentsRouter.filter(component => component.key === key)
     // console.log(componentParameters.btnData);
-    if (component.key === 'button') {
+    if (key === 'button') {
         const handledButtonObject = handleButtonAttributes(componentParameters.btnData)
         return component.component.render(handledButtonObject)
+    } else if (key === 'loading') {
+        return component.component[`render${componentParameters.loadingSize}`]()
     } else {
         return component.component.render()
     }
