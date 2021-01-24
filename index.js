@@ -129,15 +129,17 @@ const autoSignIn = async () => {
             getMeetings()
             console.log('signed in successfully - auto check');
             console.log(userToken);
+            controlBtns.classList.remove('d-none')
+            mainRouter('meetings-dashboard')
             // ...
         } else {
             // User is signed out
             // ...
             console.log('sign in failed - auto check');
+            updateLoggingUI()
         }
         isSignedIn = !!user
         console.log(isSignedIn);
-        updateLoggingUI()
     });
 }
 window.addEventListener('load', autoSignIn)
@@ -163,7 +165,12 @@ window.signIn = async () => {
         console.log(errorMessage)
 
         isSignedIn = state
-        updateLoggingUI(errorMessage)
+
+        if (isSignedIn) {
+            await mainRouter('meeting-form')
+        } {
+            updateLoggingUI(errorMessage)
+        }
 
     } else {
         facebookSignInUsingRedirect()
@@ -191,7 +198,7 @@ function updateLoggingUI(errorMessage = undefined) {
     console.log('hi');
     // TODO controlBtns appear with homepage not before it
     const fbSignInBtn = document.querySelector('#fbSignInBtn')
-    // const fbLoginMessage = document.querySelector('#fbLoginMessage')
+    const fbLoginMessage = document.querySelector('#fbLoginMessage')
     // const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
     const controlBtns = document.querySelector('#controlBtns')
 
@@ -201,7 +208,6 @@ function updateLoggingUI(errorMessage = undefined) {
         fbSignInBtn.innerHTML = getSharedComponentCode('loading', {
             loadingSize: 'Small'
         })
-        controlBtns.classList.remove('d-none')
         // fbLoginMessage.classList.remove('d-none')
         // fbLoginMessage.innerText = "تم تسجيل دخولك و سيتم الآن توجيهك إلى صفحة الاجتماعات"
 
@@ -210,8 +216,8 @@ function updateLoggingUI(errorMessage = undefined) {
         fbSignInBtn.disabled = false
         fbSignInBtn.innerText = "SIGN IN"
         controlBtns.classList.add('d-none')
-        // fbLoginMessage.classList.toggle('d-none', !errorMessage)
-        // fbLoginMessage.innerText = errorMessage
+        fbLoginMessage.classList.toggle('d-none', !errorMessage)
+        fbLoginMessage.innerText = errorMessage
     }
     // fbLoginSpinner.classList.add('d-none') //spinner none because user has a known state
 }
