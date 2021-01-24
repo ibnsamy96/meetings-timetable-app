@@ -35,12 +35,15 @@ export const initializeDashboard = async () => {
 
     console.log('hi from init');
 
-
     showLoadingCards()
 
     let meetingsArrayOfObjects = await getMeetings()
 
     // console.table(meetingsArrayOfObjects);
+
+    const closeTeamDataElement = document.querySelector('#closeTeamData')
+    closeTeamDataElement.style.right = '-' + getComputedStyle(closeTeamDataElement).getPropertyValue('width')
+    console.log(getComputedStyle(closeTeamDataElement).getPropertyValue('width'));
 
     let meetingsHTML = '';
 

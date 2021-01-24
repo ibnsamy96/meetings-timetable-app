@@ -6,11 +6,8 @@ export const MembersAreaComponent = {
         position: absolute;
         z-index: 200;
         top: 48px;
-        right: -25vw;
-        bottom: 0px;
-        width: 25vw;
-        max-width:100vw;
-        min-width:fit-content">
+        right: -100vw;
+        bottom: 0px;">
 
         <div class = 'row g-0 mt-5 mb-3'>
      

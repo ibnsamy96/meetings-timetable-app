@@ -263,13 +263,16 @@ window.toggleTeamData = ({
     chosenMeeting,
     openIt
 }) => {
+    const closeTeamDataElement = document.querySelector('#closeTeamData')
     if (openIt) {
+        document.body.style.overflow = 'hidden'
         getTeamMembers(chosenMeeting)
         document.querySelector('#hideContent').classList.remove('d-none')
         setTimeout(() => {
             document.querySelector('#hideContent').style.opacity = openIt ? 1 : 0;
         }, 1)
     } else {
+        document.body.style.overflow = 'auto'
         document.querySelector('#hideContent').style.opacity = openIt ? 1 : 0;
         setTimeout(() => {
             document.querySelector('#hideContent').classList.add('d-none')
@@ -277,11 +280,11 @@ window.toggleTeamData = ({
     }
 
     const mainNewLeftMargin = openIt ? mainLeftMargin * 0.8 : mainLeftMargin
-    const teamDataNewRight = openIt ? 0 : -25
+    const teamDataNewRight = openIt ? 0 : '-' + getComputedStyle(closeTeamDataElement).getPropertyValue('width')
     console.log(mainNewLeftMargin);
     console.log(mainNewLeftMargin.toString() + 'px');
     document.querySelector('#root').style.marginLeft = mainNewLeftMargin.toString() + 'px';
-    document.querySelector('#closeTeamData').style.right = teamDataNewRight.toString() + 'vw';
+    closeTeamDataElement.style.right = teamDataNewRight.toString();
     console.log(document.querySelector('#root'));
     console.log(document.querySelector('#closeTeamData').style.right);
 }

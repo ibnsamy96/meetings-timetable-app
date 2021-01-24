@@ -206,7 +206,21 @@ nav {
 
 
 
-@media (max-width: 767px) {
+@media (max-width: 1200px) {
+    #closeTeamData {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 992px) {
+    #closeTeamData {
+        width: 40vw;
+    }
+}
+
+
+
+@media (max-width: 768px) {
     #sidebar {
         position: fixed;
         bottom: 0;
@@ -217,8 +231,22 @@ nav {
         z-index: 20;
     }
 
-    #newMeetingBtn {
-        /* border-radius: 0.25rem !important; */
+    #closeTeamData {
+        width: 50vw;
     }
 
+}
+
+
+@media (max-width: 576px) {
+    #closeTeamData {
+        width: 60vw;
+    }
+}
+
+
+@media (max-width: 320px) {
+    #closeTeamData {
+        width: 100vw;
+    }
 }
