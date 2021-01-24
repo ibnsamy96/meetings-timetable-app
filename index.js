@@ -42,7 +42,6 @@ const mainRouter = async (pageName) => {
     document.querySelector('main').innerHTML = pageComponent
     // if (pageName === 'login') {
     calculateMainHeight()
-
 }
 
 const playNavbarBrand = () => {
@@ -52,20 +51,15 @@ const playNavbarBrand = () => {
         playingSeparatorCounter += 1
         if (playingSeparatorCounter === 6) {
             document.querySelector('#navbarBrandSeparator').classList.remove('d-none')
+            document.querySelector('#projectName').style.opacity = 1
+            document.querySelector('#projectName').style.left = 0
             clearInterval(playingSeparator)
         }
     }, 500)
-
-    setTimeout(() => {
-        document.querySelector('#projectName').style.opacity = 1
-        document.querySelector('#projectName').style.left = 0
-    }, 6 * 500);
-
-
 }
 
 function calculateMainHeight() {
-    const navbarHeightPlusPadding = 40 + 16
+    const navbarHeightPlusPadding = 30 + 18
     const mainElementTopMargin = 24
     const mainElementBottomPadding = 24
     const mainHeight = window.innerHeight - navbarHeightPlusPadding - mainElementTopMargin - mainElementBottomPadding;
@@ -73,6 +67,10 @@ function calculateMainHeight() {
     const loginSection = document.querySelector('#login-component')
     if (loginSection) {
         document.querySelector('#login-component').style.height = `${mainHeight}px`
+    }
+    const loadingSection = document.querySelector('#loading-component')
+    if (loadingSection) {
+        document.querySelector('#loading-component').style.height = `${mainHeight}px`
     }
     const fbSignOutBtn = document.querySelector('#fbSignOutBtn')
     if (fbSignOutBtn) {
@@ -94,8 +92,16 @@ const autoSignIn = async () => {
     const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
     const fbSignInBtn = document.querySelector('#fbSignInBtn')
 
-    fbLoginSpinner.classList.remove('d-none')
-    fbSignInBtn.classList.add('d-none')
+    // fbLoginSpinner.classList.remove('d-none')
+    // fbSignInBtn.classList.add('d-none')
+
+    fbSignInBtn.style.height = getComputedStyle(fbSignInBtn).getPropertyValue('height')
+    fbSignInBtn.style.width = getComputedStyle(fbSignInBtn).getPropertyValue('width')
+
+    fbSignInBtn.disabled = true
+    fbSignInBtn.innerHTML = getSharedComponentCode('loading', {
+        loadingSize: 'Small'
+    })
 
     playNavbarBrand()
 
@@ -182,28 +188,32 @@ window.signOut = async () => {
 
 
 function updateLoggingUI(errorMessage = undefined) {
+    console.log('hi');
     // TODO controlBtns appear with homepage not before it
     const fbSignInBtn = document.querySelector('#fbSignInBtn')
-    const fbLoginMessage = document.querySelector('#fbLoginMessage')
-    const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
+    // const fbLoginMessage = document.querySelector('#fbLoginMessage')
+    // const fbLoginSpinner = document.querySelector('#fbLoginSpinner')
     const controlBtns = document.querySelector('#controlBtns')
 
     if (isSignedIn) {
         // if user is signed in
-        fbSignInBtn.classList.add('d-none')
+        fbSignInBtn.disabled = true
+        fbSignInBtn.innerHTML = getSharedComponentCode('loading', {
+            loadingSize: 'Small'
+        })
         controlBtns.classList.remove('d-none')
-        fbLoginMessage.classList.remove('d-none')
-        fbLoginMessage.innerText = "تم تسجيل دخولك و سيتم الآن توجيهك إلى صفحة الاجتماعات"
+        // fbLoginMessage.classList.remove('d-none')
+        // fbLoginMessage.innerText = "تم تسجيل دخولك و سيتم الآن توجيهك إلى صفحة الاجتماعات"
 
     } else {
         // if user isn't signed in - maybe signed out and may be error
-        fbSignInBtn.classList.remove('d-none')
+        fbSignInBtn.disabled = false
+        fbSignInBtn.innerText = "SIGN IN"
         controlBtns.classList.add('d-none')
-        fbLoginMessage.classList.toggle('d-none', !errorMessage)
-        fbLoginMessage.innerText = errorMessage
+        // fbLoginMessage.classList.toggle('d-none', !errorMessage)
+        // fbLoginMessage.innerText = errorMessage
     }
-    fbLoginSpinner.classList.add('d-none') //spinner none because user has a known state
-
+    // fbLoginSpinner.classList.add('d-none') //spinner none because user has a known state
 }
 
 
@@ -235,7 +245,7 @@ window.fireCheckMeetingForm = () => {
 window.fireSubmitMeetingForm = async () => {
     submitMeetingForm()
     // TODO route to home component instead of the login component
-    await mainRouter('login')
+    await mainRouter('meetings-dashboard')
 }
 
 
