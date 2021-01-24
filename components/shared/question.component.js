@@ -27,10 +27,10 @@ export const QuestionComponent = {
         <li id='${questionData.id}' data-multiple='true' class="h4 my-4 timeQuestion">
         <p class="m-0"> ${questionData.questionContent} </p>
         <span class="h5 fw-normal"> من الساعة</span>
-        <div onclick="fireChooseThisChoice(this)" id="timeFrom" class="h5 fw-normal secondaryBoxShadow timeQuestion mt-2 btn btn-success"  contenteditable="true"
+        <div onclick="fireChooseThisChoice(this)" id="timeFrom" class="h5 fw-normal secondaryBoxShadow timeQuestion mt-2 btn btn-success"  contenteditable="true" dir="ltr"
         >00:00</div>
         <span class="h5 fw-normal"> و حتّى </span>
-        <div onclick="fireChooseThisChoice(this)" id="timeTo" class="h5 fw-normal secondaryBoxShadow timeQuestion mt-2 btn btn-success"  contenteditable="true"
+        <div onclick="fireChooseThisChoice(this)" id="timeTo" class="h5 fw-normal secondaryBoxShadow timeQuestion mt-2 btn btn-success"  contenteditable="true" dir="ltr"
         >00:00</div>
       <!--  <input id='input' class="h5 fw-normal secondaryBoxShadow  mt-2 btn btn-success" value='00:00' /> -->
     </li>
@@ -46,13 +46,13 @@ export const QuestionComponent = {
 
         <span class="h5 fw-normal"> يوم</span>
 
-        <div onclick="fireChooseThisChoice(this)" id="dateDay" class="h5 fw-normal secondaryBoxShadow dateQuestion mt-2 btn btn-success"  contenteditable="true"
+        <div onclick="fireChooseThisChoice(this)" id="dateDay" class="h5 fw-normal secondaryBoxShadow dateQuestion mt-2 btn btn-success"  contenteditable="true" dir="ltr"
         >1</div>
         <span class="h5 fw-normal"> من شهر </span>
-        <div onclick="fireChooseThisChoice(this)" id="dateMonth" class="h5 fw-normal secondaryBoxShadow dateQuestion mt-2 btn btn-success"  contenteditable="true"
+        <div onclick="fireChooseThisChoice(this)" id="dateMonth" class="h5 fw-normal secondaryBoxShadow dateQuestion mt-2 btn btn-success"  contenteditable="true" dir="ltr"
         >1</div>
         <span class="h5 fw-normal"> من عام </span>
-        <div onclick="fireChooseThisChoice(this)" id="dateYear" class="h5 fw-normal secondaryBoxShadow dateQuestion mt-2 btn btn-success"  contenteditable="true"
+        <div onclick="fireChooseThisChoice(this)" id="dateYear" class="h5 fw-normal secondaryBoxShadow dateQuestion mt-2 btn btn-success"  contenteditable="true" dir="ltr"
         >2021</div>
 
         <!--
