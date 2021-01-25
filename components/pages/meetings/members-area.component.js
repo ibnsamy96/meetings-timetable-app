@@ -7,7 +7,8 @@ export const MembersAreaComponent = {
         z-index: 200;
         top: 48px;
         right: -100vw;
-        bottom: 0px;">
+        bottom: 0px;
+        min-width:320px">
 
         <div class = 'row g-0 mt-5 mb-3'>
      

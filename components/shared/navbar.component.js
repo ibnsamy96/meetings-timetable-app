@@ -5,7 +5,7 @@ import {
 export const NavbarComponent = {
     render: () => {
         return `
-        <nav class="navbar navbar-light bg-light navBoxShadow py-0" dir='ltr'>
+        <nav class="navbar fixed-top navbar-light bg-light navBoxShadow py-0" dir='ltr'>
         <div class="container-fluid px-0 ">
             <span class="navbar-brand me-0  my-1">
                 <b style="position:relative;z-index:30;    padding-left: 1rem;" class = "bg-light">Ma3an</b>
