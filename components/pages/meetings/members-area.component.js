@@ -3,7 +3,7 @@ export const MembersAreaComponent = {
         return `
 
         <section id="closeTeamData" class="meetingMembersBoxShadow px-4" style="transition:all ease-in-out 500ms;background-color: #fff;
-        position: absolute;
+        position: fixed;
         z-index: 200;
         top: 48px;
         right: -100vw;
