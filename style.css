@@ -221,15 +221,7 @@ nav {
 
 
 @media (max-width: 768px) {
-    #sidebar {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        /* transform: translateX(50%); */
-        /* border-radius: 50%; */
-        z-index: 20;
-    }
+
 
     #closeTeamData {
         width: 50vw;
@@ -241,6 +233,16 @@ nav {
 @media (max-width: 576px) {
     #closeTeamData {
         width: 60vw;
+    }
+
+    #sidebar {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        /* transform: translateX(50%); */
+        /* border-radius: 50%; */
+        z-index: 20;
     }
 }
 
