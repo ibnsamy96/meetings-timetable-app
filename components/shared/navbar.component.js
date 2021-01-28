@@ -12,10 +12,24 @@ export const NavbarComponent = {
                 <span class="px-1 bg-light" style="position:relative;z-index:30" id="navbarBrandSeparator" >|</span>
                 <span id="projectName" style="position:relative;left:-10rem;opacity:0;transition: all 0.5s ease-in-out;">Meetings Timetable</span>
             </span>
-            <div id='controlBtns' class="d-flex d-none">
+            <div id='controlBtns' class="d-flex d-none" style="overflow:hidden">
             
                 <div id='sidebar' class = 'row mx-0'>
-                    <div class = 'col px-0'>
+
+                    <div class = 'col px-0' style="overflow:hidden">
+                    ${getSharedComponentCode('button', {btnData: {
+                        id: 'membersPageBtn',
+                        activationMethod: 'routeToAnotherPage(this)',
+                        content: 'قائمة الأعضاء',
+                        buttonColorClass: 'btn-primary',
+                        buttonClasses:'mx-0 w-100',
+                        spanClasses:'p',
+                        buttonStyle: '',
+                        spanStyle: ''
+                    }})}
+                    </div>
+
+                    <div class = 'col px-0' style="overflow:hidden">
                         ${getSharedComponentCode('button', {btnData: {
                             id: 'newMeetingBtn',
                             activationMethod: 'routeToAnotherPage(this)',
@@ -27,6 +41,7 @@ export const NavbarComponent = {
                             spanStyle: ''
                         }})}
                     </div>
+
                 </div>
      
                 ${getSharedComponentCode('button',{btnData:{

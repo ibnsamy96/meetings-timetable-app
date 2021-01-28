@@ -169,8 +169,13 @@ nav {
     align-items: center;
 }
 
-#newMeetingBtn {
+#newMeetingBtn,
+#membersPageBtn {
     border-radius: 0 !important;
+}
+
+#membersPageBtn {
+    width: max-content !important
 }
 
 #fbSignOutBtn {
@@ -244,8 +249,18 @@ nav {
         /* border-radius: 50%; */
         z-index: 20;
     }
+
+    #membersPageBtn {
+        width: 100% !important;
+    }
 }
 
+
+@media (max-width: 320px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+}
 
 @media (max-width: 320px) {
     #closeTeamData {

@@ -80,6 +80,10 @@ function calculateMainHeight() {
     if (newMeetingBtn) {
         newMeetingBtn.style.height = getComputedStyle(document.getElementsByTagName('nav')[0]).getPropertyValue('height')
     }
+    const membersPageBtn = document.querySelector('#membersPageBtn')
+    if (membersPageBtn) {
+        membersPageBtn.style.height = getComputedStyle(document.getElementsByTagName('nav')[0]).getPropertyValue('height')
+    }
 }
 
 window.addEventListener('resize', calculateMainHeight)
