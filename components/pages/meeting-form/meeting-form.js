@@ -456,8 +456,8 @@ export const submitMeetingForm = async () => {
     // console.table(questions);
     console.log(questions);
     const userInfo = restoreUserInfo()
-    const meetingDateQuestionAnswers = questions.find(question => question.id === 'meetingDate').answers.map(answer => answer.content)
-    const meetingTimeQuestionAnswers = questions.find(question => question.id === 'meetingTime').answers.map(answer => answer.content)
+    const meetingDateQuestionAnswers = questions.find(question => question.id === 'meetingDate').answers.map(answer => answer.content.trim())
+    const meetingTimeQuestionAnswers = questions.find(question => question.id === 'meetingTime').answers.map(answer => answer.content.trim())
     const isFinal = questions[2].answers[0].id === 'yes' ? true : false
     const meetingInfoJson = {
         "creatorId": userInfo.userId,
