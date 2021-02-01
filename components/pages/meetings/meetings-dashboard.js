@@ -18,7 +18,7 @@ const showLoadingCards = () => {
         meetingsDashboardRow = document.querySelector('#meetingsDashboard .row')
         if (meetingsDashboardRow) {
             meetingsDashboardRow.innerHTML = ''
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < 4; i++) {
                 const cardComponent = document.createElement('div')
                 meetingsDashboardRow.appendChild(cardComponent)
                 cardComponent.outerHTML = MeetingCardComponent.renderLoading()

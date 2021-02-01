@@ -21,7 +21,17 @@ export const MeetingCardComponent = {
     renderLoading: () => {
         return `
         <div class="col">
-        <div class="p-3 border bg-light">loading</div>
+            <div class="p-3 meetingCard mx-3 bg-light d-flex justify-content-center align-items-center"
+            style = '
+            color:#808182;
+            background-image: linear-gradient(#ebedef, #f8f9fa);
+            border-color:#f8f9fa;
+            min-height:146px;
+            '>
+
+            <p class = "h5 fw-normal m-0 p-0 text-center">يتم التحميل...</p>
+
+            </div>
         </div>
           `
     }
