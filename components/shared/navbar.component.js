@@ -15,7 +15,9 @@ export const NavbarComponent = {
             <div id='controlBtns' class="d-flex d-none" style="overflow:hidden">
             
                 <div id='sidebar' class = 'row mx-0'>
-
+                    
+                
+                <!--
                     <div class = 'col px-0' style="overflow:hidden">
                     ${getSharedComponentCode('button', {btnData: {
                         id: 'membersPageBtn',
@@ -28,6 +30,8 @@ export const NavbarComponent = {
                         spanStyle: ''
                     }})}
                     </div>
+                    
+                -->
 
                     <div class = 'col px-0' style="overflow:hidden">
                         ${getSharedComponentCode('button', {btnData: {
